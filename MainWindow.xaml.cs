@@ -16,13 +16,12 @@ using System.Windows.Threading;
 
 namespace lab1
 {
-    public partial class DispatcherTimerSample : Window
+    public partial class Timer : Window
     {
         private DispatcherTimer timer = new DispatcherTimer();
-        public DispatcherTimerSample()
+        public Timer()
         {
             InitializeComponent();
-
             timer.Tick += timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
@@ -37,7 +36,6 @@ namespace lab1
         {
             Stoper window = new Stoper();
             window.Show();
-
         }
     }
 }

@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab1"
         mc:Ignorable="d"
-        Title="Stoper" Height="450" Width="800">
-	
-	<Grid Height="434.04" Width="800">
-		<Label Name="lblStoper"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="100" FontSize="40"/>
-		<Button Name ="stop" Click="stop_Click" Content="START" HorizontalAlignment="Left" Margin="200,272,0,0" VerticalAlignment="Top" Width="100" Height="50"/>
-		<Button Name="start" Click="start_Click" Content="STOP" HorizontalAlignment="Left" Margin="350,272,200,0" VerticalAlignment="Top" Width="100" Height="50"/>
-		<Button Name="reset" Click="reset_Click" Content="RESET" HorizontalAlignment="Left" Margin="500,272,0,0" VerticalAlignment="Top" Width="100" Height="50"/>
+        Title="Stoper" Height="300" Width="500">
+
+    <Grid Height="434.04" Width="800">
+        <Label x:Name="lblStoper"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="100" FontSize="40" Margin="152,70,0,0" Opacity="0.6" />
+        <Button x:Name ="stop" Click="stop_Click" Content="START" HorizontalAlignment="Left" Margin="55,187,0,0" VerticalAlignment="Top" Width="100" Height="50"/>
+        <Button x:Name="start" Click="start_Click" Content="STOP" HorizontalAlignment="Left" Margin="202,187,0,0" VerticalAlignment="Top" Width="100" Height="50"/>
+        <Button x:Name="reset" Click="reset_Click" Content="RESET" HorizontalAlignment="Center" Margin="0,187,0,0" VerticalAlignment="Top" Width="100" Height="50"/>
     </Grid>
-	
+
 </Window>

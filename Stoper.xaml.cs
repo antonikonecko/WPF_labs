@@ -23,14 +23,13 @@ namespace lab1
         
         private DispatcherTimer timer = new DispatcherTimer();
         DateTime x = new DateTime();
+
         public Stoper()
         {
             InitializeComponent();
-
             timer.Tick += new EventHandler(stoper_Tick);
             timer.Interval = new TimeSpan(0, 0, 1);
-            lblStoper.Content = "00:00:00";          
-
+            lblStoper.Content = "00:00:00";       
         }
         
         private void stoper_Tick(object sender, EventArgs e)
@@ -55,7 +54,6 @@ namespace lab1
             timer.Stop();
             x = new DateTime();
             lblStoper.Content = "00:00:00";
-
         }
 
     }
