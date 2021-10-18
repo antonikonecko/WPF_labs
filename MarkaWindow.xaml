@@ -1,0 +1,38 @@
+﻿<Window x:Class="lab2.MarkaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab2"
+        mc:Ignorable="d"
+        Title="MarkaWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <RadioButton  x:Name="btn_aston" Grid.Column="0" Grid.Row="0"  Content="Aston Martin" HorizontalAlignment="Left" Margin="152,62,0,0" VerticalAlignment="Top" Visibility="Visible" Checked="AstonRadioButton_Checked" Unchecked="AstonRadioButton_Unchecked"/>
+        <RadioButton  x:Name="btn_alfa" Grid.Column="0" Grid.Row="0"  Content="Alfa Romeo" HorizontalAlignment="Left" Margin="152,82,0,0" VerticalAlignment="Top" Checked="AlfaRadioButton_Checked" Unchecked="AlfaRadioButton_Unchecked" />
+        <RadioButton  x:Name="btn_bmw"  Content="BMW" HorizontalAlignment="Left" Margin="152,102,0,0" VerticalAlignment="Top" Height="19" Width="80" Checked="BMWRadioButton_Checked" Unchecked="BMWRadioButto_Unchecked"/>
+
+
+        <TextBlock   Grid.Column="0" Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,37,0,0" FontSize="16" Text="Polisa"/>
+        <TextBox x:Name="tbox_polisa" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="16" MinWidth="40" MaxWidth="60" TextChanged="tbox_polisa_TextChanged"/>
+     
+
+        <Label x:Name="lbl_cena" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" />
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="Cena" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,37,0,0" FontSize="16"/>
+        
+        <CheckBox x:Name="chkb_hamulce" Grid.Column="1" Grid.Row="0" Content="Hamulce ceramiczne" HorizontalAlignment="Left" Margin="148,35,0,149" Checked="Hamulce_Checked" Unchecked="Hamulce_Unchecked"/>
+        <CheckBox x:Name="chkb_zawieszenie" Grid.Column="1" Grid.Row="0" Content="Regulowane zawieszenie" HorizontalAlignment="Left" Margin="147,75,0,113" Checked="Zawieszenie_Checked" Unchecked="Zawieszenie_Unchecked" />
+        <CheckBox x:Name="chkb_wydech" Grid.Column="1" Grid.Row="0" Content="Wydech sportowy" HorizontalAlignment="Left" Margin="147,114,0,71" Checked="Wydech_Checked" Unchecked="Wydech_Unchecked"/>
+        <CheckBox x:Name="chkb_fotele" Grid.Column="1" Grid.Row="0" Content="Fotele sportowe" HorizontalAlignment="Center" Margin="0,154,0,31" Checked="Fotele_Checked" Unchecked="Fotele_Unchecked"/>
+    </Grid>
+</Window>
