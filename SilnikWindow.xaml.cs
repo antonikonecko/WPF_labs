@@ -19,7 +19,7 @@ namespace lab2
     /// </summary>
     public partial class SilnikWindow : Window
     {
-<<<<<<< HEAD
+
         public int cena = 0;
         public int moc = 0;
         public SilnikWindow(int cena)
@@ -31,26 +31,26 @@ namespace lab2
 
         private void BenzynaRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-           cena += 10000;
-           lbl_Silnik.Content = cena + moc;
+            cena += 10000;
+            lbl_Silnik.Content = cena + moc;
         }
 
         private void GazRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-           cena += 10000;
-           lbl_Silnik.Content = cena + moc;
+            cena += 10000;
+            lbl_Silnik.Content = cena + moc;
         }
 
         private void DieselRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-           cena += 12000;
-           lbl_Silnik.Content = cena + moc;
+            cena += 12000;
+            lbl_Silnik.Content = cena + moc;
         }
 
         private void HybrydaRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-           cena += 70000;
-           lbl_Silnik.Content = cena + moc;
+            cena += 70000;
+            lbl_Silnik.Content = cena + moc;
         }
         private void ElektrykRadioButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -59,26 +59,26 @@ namespace lab2
         }
         private void BenzynaRadioButton_Unchecked(object sender, RoutedEventArgs e)
         {
-           cena -= 10000;
-           lbl_Silnik.Content = cena + moc;
+            cena -= 10000;
+            lbl_Silnik.Content = cena + moc;
         }
 
         private void GazRadioButton_Unchecked(object sender, RoutedEventArgs e)
         {
-           cena -= 10000;
-           lbl_Silnik.Content = cena + moc;
+            cena -= 10000;
+            lbl_Silnik.Content = cena + moc;
         }
 
         private void DieselRadioButton_Unchecked(object sender, RoutedEventArgs e)
         {
-           cena -= 12000;
-           lbl_Silnik.Content = cena + moc;
+            cena -= 12000;
+            lbl_Silnik.Content = cena + moc;
         }
 
         private void HybrydaRadioButton_Unchecked(object sender, RoutedEventArgs e)
         {
-           cena -= 70000;
-           lbl_Silnik.Content = cena + moc;
+            cena -= 70000;
+            lbl_Silnik.Content = cena + moc;
         }
         private void ElektrykRadioButton_Unchecked(object sender, RoutedEventArgs e)
         {
@@ -89,14 +89,11 @@ namespace lab2
         {
             if (cbx_moc.SelectedIndex != 0)
             {
-                moc =  20000 * cbx_moc.SelectedIndex;
-                lbl_Silnik.Content = cena + moc;                
-            }                             
-=======
-        public SilnikWindow()
-        {
-            InitializeComponent();
->>>>>>> 9fc8a22c95e790cf0dbf627b1ca910818cff28e1
+                moc = 20000 * cbx_moc.SelectedIndex;
+                lbl_Silnik.Content = cena + moc;
+            }
+
         }
     }
 }
+

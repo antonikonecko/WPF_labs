@@ -7,16 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-<<<<<<< HEAD
         <Button x:Name="btn_silnik" Content="Silnik" Click="btn_silnik_Click"  HorizontalAlignment="Left" Margin="288,146,0,0" VerticalAlignment="Top" Height="50" Width="150"/>
         <Button x:Name="btn_marka" Content="Marka" Click="btn_marka_Click" HorizontalAlignment="Left" Margin="115,146,0,0" VerticalAlignment="Top" Height="50" Width="150"/>
         <Label x:Name="lbl1" Content="cena" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="485,146,0,0" VerticalAlignment="Top" Width="150" Height="50" Background="#FFBCBDC3" OpacityMask="#A86F8ECC"/>
-=======
-        <Button Name="btn_silnik" Content="Silnik" Click="btn_silnik_Click"  HorizontalAlignment="Left" Margin="288,146,0,0" VerticalAlignment="Top" Height="50" Width="150"/>
-        <Button Name="btn_marka" Content="Marka" Click="btn_marka_Click" HorizontalAlignment="Left" Margin="115,146,0,0" VerticalAlignment="Top" Height="50" Width="150
-                "/>
-        <Label Name="lbl1" Content="Label" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="485,146,0,0" VerticalAlignment="Top" Width="150" Height="50"/>
->>>>>>> 9fc8a22c95e790cf0dbf627b1ca910818cff28e1
-
     </Grid>
 </Window>

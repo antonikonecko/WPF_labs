@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MarkaWindow" Height="450" Width="800">
     <Grid>
-<<<<<<< HEAD
+
         <Grid.ColumnDefinitions>
 
             <ColumnDefinition Width="1*" />
@@ -35,11 +35,9 @@
         <CheckBox x:Name="chkb_zawieszenie" Grid.Column="1" Grid.Row="0" Content="Regulowane zawieszenie" HorizontalAlignment="Left" Margin="147,75,0,113" Checked="Zawieszenie_Checked" Unchecked="Zawieszenie_Unchecked" />
         <CheckBox x:Name="chkb_wydech" Grid.Column="1" Grid.Row="0" Content="Wydech sportowy" HorizontalAlignment="Left" Margin="147,114,0,71" Checked="Wydech_Checked" Unchecked="Wydech_Unchecked"/>
         <CheckBox x:Name="chkb_fotele" Grid.Column="1" Grid.Row="0" Content="Fotele sportowe" HorizontalAlignment="Center" Margin="0,154,0,31" Checked="Fotele_Checked" Unchecked="Fotele_Unchecked"/>
-=======
-        <RadioButton Name="btn_aston" Content="Aston Martin" HorizontalAlignment="Left" Margin="60,37,0,0" VerticalAlignment="Top"/>
-        <RadioButton Name="btn_alfa" Content="Alfa Romeo" HorizontalAlignment="Left" Margin="60,57,0,0" VerticalAlignment="Top"/>
-        <RadioButton Name="btn_bmw" Content="BMW" HorizontalAlignment="Left" Margin="60,77,0,0" VerticalAlignment="Top"/>
 
->>>>>>> 9fc8a22c95e790cf0dbf627b1ca910818cff28e1
+
+
+
     </Grid>
 </Window>

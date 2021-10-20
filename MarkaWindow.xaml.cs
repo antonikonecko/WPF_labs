@@ -19,7 +19,7 @@ namespace lab2
     /// </summary>
     public partial class MarkaWindow : Window
     {
-<<<<<<< HEAD
+
         public int cena;
         public int polisa;
         public MarkaWindow(int cena)
@@ -88,7 +88,7 @@ namespace lab2
             cena += 15000;
             lbl_cena.Content = cena + polisa;
         }
-       
+
         private void Hamulce_Unchecked(object sender, RoutedEventArgs e)
         {
             cena -= 20000;
@@ -117,17 +117,12 @@ namespace lab2
         {
             if (!int.TryParse(tbox_polisa.Text, out polisa))
             {
-                polisa = 0;                
+                polisa = 0;
             }
             lbl_cena.Content = cena + polisa;
-=======
-        public int cena = 0;
-        
-       
-        public MarkaWindow()
-        {
-            InitializeComponent();
->>>>>>> 9fc8a22c95e790cf0dbf627b1ca910818cff28e1
         }
+
+
     }
 }
+
