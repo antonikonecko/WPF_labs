@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="SilnikWindow" Height="450" Width="800">
     <Grid>
+<<<<<<< HEAD
         <RadioButton x:Name="Benzyna" Content="Benzyna" HorizontalAlignment="Left" Margin="60,37,0,0" VerticalAlignment="Top" Checked="BenzynaRadioButton_Checked" Unchecked="BenzynaRadioButton_Unchecked"/>
         <RadioButton x:Name="Gaz" Content="Gaz" HorizontalAlignment="Left" Margin="60,57,0,0" VerticalAlignment="Top" Checked="GazRadioButton_Checked" Unchecked="GazRadioButton_Unchecked"/>
         <RadioButton x:Name="Diesel" Content="Diesel" HorizontalAlignment="Left" Margin="60,77,0,0" VerticalAlignment="Top" Checked="DieselRadioButton_Checked" Unchecked="DieselRadioButton_Unchecked"/>
@@ -14,6 +15,15 @@
         <RadioButton x:Name="Elektryk" Content="Elektryk" HorizontalAlignment="Left" Margin="60,117,0,0" VerticalAlignment="Top" Checked="ElektrykRadioButton_Checked" Unchecked="ElektrykRadioButton_Unchecked"/>
 
         <ComboBox x:Name="cbx_moc" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="60,231,601,145" SelectionChanged="ComboBox_SelectionChanged">
+=======
+        <RadioButton Name="Benzyna" Content="Benzyna" HorizontalAlignment="Left" Margin="60,37,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="Gaz" Content="Gaz" HorizontalAlignment="Left" Margin="60,57,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="Diesel" Content="Diesel" HorizontalAlignment="Left" Margin="60,77,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="Hybryda" Content="Hybryda" HorizontalAlignment="Left" Margin="60,97,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="Elektryk" Content="Elektryk" HorizontalAlignment="Left" Margin="60,117,0,0" VerticalAlignment="Top"/>
+
+        <ComboBox VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="60,231,601,145">
+>>>>>>> 9fc8a22c95e790cf0dbf627b1ca910818cff28e1
             <ComboBoxItem IsSelected="True">Wybierz moc:</ComboBoxItem>
             <ComboBoxItem>180 KM</ComboBoxItem>
             <ComboBoxItem>220 KM</ComboBoxItem>
@@ -23,7 +33,11 @@
             <ComboBoxItem>420 KM</ComboBoxItem>
             <ComboBoxItem>610 KM</ComboBoxItem>
         </ComboBox>
+<<<<<<< HEAD
         <Label x:Name="lbl_Silnik"  HorizontalAlignment="Left"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="522,64,0,0" VerticalAlignment="Top" Width="180" Height="55"/>
+=======
+        <Label Name="lbl_Silnik" Content="Cena" HorizontalAlignment="Left"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="522,64,0,0" VerticalAlignment="Top" Width="180" Height="55"/>
+>>>>>>> 9fc8a22c95e790cf0dbf627b1ca910818cff28e1
 
 
     </Grid>

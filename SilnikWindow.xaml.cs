@@ -19,6 +19,7 @@ namespace lab2
     /// </summary>
     public partial class SilnikWindow : Window
     {
+<<<<<<< HEAD
         public int cena = 0;
         public int moc = 0;
         public SilnikWindow(int cena)
@@ -91,6 +92,11 @@ namespace lab2
                 moc =  20000 * cbx_moc.SelectedIndex;
                 lbl_Silnik.Content = cena + moc;                
             }                             
+=======
+        public SilnikWindow()
+        {
+            InitializeComponent();
+>>>>>>> 9fc8a22c95e790cf0dbf627b1ca910818cff28e1
         }
     }
 }

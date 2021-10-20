@@ -19,6 +19,7 @@ namespace lab2
     /// </summary>
     public partial class MarkaWindow : Window
     {
+<<<<<<< HEAD
         public int cena;
         public int polisa;
         public MarkaWindow(int cena)
@@ -119,6 +120,14 @@ namespace lab2
                 polisa = 0;                
             }
             lbl_cena.Content = cena + polisa;
+=======
+        public int cena = 0;
+        
+       
+        public MarkaWindow()
+        {
+            InitializeComponent();
+>>>>>>> 9fc8a22c95e790cf0dbf627b1ca910818cff28e1
         }
     }
 }

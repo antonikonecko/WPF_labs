@@ -43,8 +43,8 @@ namespace lab2
             cena = markaWindow.cena + markaWindow.polisa;
             lbl1.Content = cena;
             if (cena != 0) { boolmarka = true; }
-            check_Bool();
-            
+            check_Bool();     
+        
         }
 
         private void btn_silnik_Click(object sender, RoutedEventArgs e)
@@ -55,7 +55,7 @@ namespace lab2
             lbl1.Content = cena;
             if (cena != 0) { boolsilnik = true; }
             check_Bool();
-        }
-
+        }       
+        
     }
 }
