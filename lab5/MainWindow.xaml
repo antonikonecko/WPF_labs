@@ -1,0 +1,78 @@
+﻿<Window x:Class="lab5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab5"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    
+    <Grid>
+        <Button x:Name="load_seq_btn"
+            Click="load_seq_btn_Click"
+            Content="Wczytaj sekwencję"
+            HorizontalAlignment="Left"
+            Margin="49,41,0,0"
+            VerticalAlignment="Top"
+            Height="37"
+            Width="150"/>
+        
+        <Button x:Name="find_pattern_btn"            
+            Click="find_pattern_btn_Click"
+            Content="Znajdź wzorce"
+            HorizontalAlignment="Left"
+            Margin="49,101,0,0"
+            VerticalAlignment="Top"
+            Height="37"
+            Width="150"/>
+
+        <ComboBox Name="cbox"
+            ItemsSource="{Binding}"
+            SelectionChanged="cbox_SelectionChanged"            
+            HorizontalAlignment="Left"
+            Margin="49,164,0,0"
+            VerticalAlignment="Top"
+            Width="150">
+                <ComboBoxItem>ComboBox Item #1</ComboBoxItem>
+                <ComboBoxItem>ComboBox Item #2</ComboBoxItem>
+        </ComboBox>
+                  
+            
+        <TextBlock Text="Select Something" IsHitTestVisible="False">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=cbox,Path=SelectedItem}" Value="{x:Null}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+        <TextBox x:Name="seq_txtbox"
+            Text="TextBox"
+            HorizontalAlignment="Left"
+            Margin="219,41,0,0"
+            TextWrapping="Wrap"
+            AcceptsReturn="True"
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto"
+            VerticalAlignment="Top"
+            Width="544"
+            Height="328"/>
+        
+        <TextBox x:Name="subseq_count_txtbox"
+            Text="TextBox"
+            TextWrapping="Wrap"
+            AcceptsReturn="True"
+            HorizontalScrollBarVisibility="Disabled"
+            HorizontalAlignment="Left"
+            Margin="49,217,0,0"
+            VerticalScrollBarVisibility="Auto"
+            VerticalAlignment="Top"
+            Width="150"
+            Height="152"/>
+    </Grid>
+</Window>
