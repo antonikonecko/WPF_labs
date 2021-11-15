@@ -28,17 +28,21 @@
 
         <ComboBox Name="cbox"
             ItemsSource="{Binding}"
-            SelectionChanged="cbox_SelectionChanged"            
+            SelectionChanged="cbox_SelectionChanged"     
+            Text="Wybierz"
+            IsEditable="True"
+            IsReadOnly="True"  
             HorizontalAlignment="Left"
             Margin="49,164,0,0"
             VerticalAlignment="Top"
             Width="150">
                 <ComboBoxItem>ComboBox Item #1</ComboBoxItem>
                 <ComboBoxItem>ComboBox Item #2</ComboBoxItem>
-        </ComboBox>
-                  
+                <ComboBoxItem>ComboBox Item #3</ComboBoxItem>
+
+        </ComboBox>                
             
-        <TextBlock Text="Select Something" IsHitTestVisible="False">
+        <!--<TextBlock Text="Select Something" IsHitTestVisible="False">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Visibility" Value="Hidden"/>
@@ -49,7 +53,7 @@
                     </Style.Triggers>
                 </Style>
             </TextBlock.Style>
-        </TextBlock>
+        </TextBlock>-->
 
         <TextBox x:Name="seq_txtbox"
             Text="TextBox"
