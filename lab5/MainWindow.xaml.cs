@@ -77,60 +77,54 @@ namespace lab5
 
             //get search text
             //string searchText = "AAC"; //searchTextBox.Text;
-            string searchText = (string)cbox.SelectedValue;
-            if (string.IsNullOrWhiteSpace(textBoxText) || string.IsNullOrWhiteSpace(searchText))
+            string searchText = (string)cbox.SelectedValue;          
+                       
+
+            //using regex to get the search count
+            //this will include search word even it is part of another word
+            //say we are searching "hi" in "hi, how are you Mahi?" --> match count will be 2 (hi in 'Mahi' also)
+
+            Regex regex = new Regex(searchText);
+            int count_MatchFound = Regex.Matches(textBoxText, regex.ToString()).Count;
+
+            for (TextPointer startPointer = rich.Document.ContentStart;
+                        startPointer.CompareTo(rich.Document.ContentEnd) <= 0;
+                            startPointer = startPointer.GetNextContextPosition(LogicalDirection.Forward))
             {
-                
-            }
-
-            else
-            {
-
-                //using regex to get the search count
-                //this will include search word even it is part of another word
-                //say we are searching "hi" in "hi, how are you Mahi?" --> match count will be 2 (hi in 'Mahi' also)
-
-                Regex regex = new Regex(searchText);
-                int count_MatchFound = Regex.Matches(textBoxText, regex.ToString()).Count;
-
-                for (TextPointer startPointer = rich.Document.ContentStart;
-                            startPointer.CompareTo(rich.Document.ContentEnd) <= 0;
-                                startPointer = startPointer.GetNextContextPosition(LogicalDirection.Forward))
+                //check if end of text
+                if (startPointer.CompareTo(rich.Document.ContentEnd) == 0)
                 {
-                    //check if end of text
-                    if (startPointer.CompareTo(rich.Document.ContentEnd) == 0)
+                    break;
+                }
+
+                //get the adjacent string
+                string parsedString = startPointer.GetTextInRun(LogicalDirection.Forward);
+
+                //check if the search string present here
+                int indexOfParseString = parsedString.IndexOf(searchText);
+
+                if (indexOfParseString >= 0) //present
+                {
+                    //setting up the pointer here at this matched index
+                    startPointer = startPointer.GetPositionAtOffset(indexOfParseString);
+
+                    if (startPointer != null)
                     {
-                        break;
+                        //next pointer will be the length of the search string
+                        TextPointer nextPointer = startPointer.GetPositionAtOffset(searchText.Length);
+
+                        //create the text range
+                        TextRange searchedTextRange = new TextRange(startPointer, nextPointer);
+
+                        //color up 
+                        searchedTextRange.ApplyPropertyValue(TextElement.BackgroundProperty, new SolidColorBrush(Colors.Green));
+
+                        //add other setting property
+
                     }
-
-                    //get the adjacent string
-                    string parsedString = startPointer.GetTextInRun(LogicalDirection.Forward);
-
-                    //check if the search string present here
-                    int indexOfParseString = parsedString.IndexOf(searchText);
-
-                    if (indexOfParseString >= 0) //present
-                    {
-                        //setting up the pointer here at this matched index
-                        startPointer = startPointer.GetPositionAtOffset(indexOfParseString);
-
-                        if (startPointer != null)
-                        {
-                            //next pointer will be the length of the search string
-                            TextPointer nextPointer = startPointer.GetPositionAtOffset(searchText.Length);
-
-                            //create the text range
-                            TextRange searchedTextRange = new TextRange(startPointer, nextPointer);
-
-                            //color up 
-                            searchedTextRange.ApplyPropertyValue(TextElement.BackgroundProperty, new SolidColorBrush(Colors.Green));
-
-                            //add other setting property
-
-                        }
-                    }
-                }              
-            }
+                }
+            }              
+            
         }
     }  
 }
