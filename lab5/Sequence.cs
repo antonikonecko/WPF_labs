@@ -8,59 +8,39 @@ namespace lab5
 {
     internal class Sequence
     {
-        private int count = 0;
-        
-        private String sequence = string.Empty;
-        public String pattern = string.Empty;
-        
-        public Sequence(String seq) 
+        //private int count = 0;
+
+        private String sequence = String.Empty;        
+        private Dictionary<String, int> pattern_dict = new();
+
+        public Sequence(String seq)
         {
-            sequence = seq;
-            count = Get_count();            
+            sequence = seq;                     
         }
-        public int Get_count()
-        { 
-            return count;
-        }
+
         public String Get_sequence()
-        { 
+        {
             return sequence;
         }
-
-        private String FindPattern() 
+                    
+        public Dictionary<String, int> PatternFind(int k)
         {
 
-            return pattern; 
+            int[] Count = new int[ sequence.Length - k ];
+                       
+            for (int i = 0; i < sequence.Length - k; i++)
+            {
+                String pattern = sequence.Substring(i, k);
+                Count[i] = PatternCount(sequence, pattern); // Algorytm 1
+                pattern_dict[pattern] = Count[i];                
+            }     
+            return pattern_dict;            
         }
 
-        public String[] PatternFind(int k)
+       //count how often patterns occurs in sequence
+       private int PatternCount(String text, String pattern)
         {
-            string text = sequence;
-            int[] Count = new int[text.Length];
-            String[] frequent_patterns = new String[] {};
-            
-            for (int i = 0; i < text.Length - k; i++)
-            {
-                pattern = text.Substring(i, k);
-                Count[i] = PatternCount(text, pattern); // Algorytm 1
-            }
-            int maxCount = Count.Max();
-            for (int i = 0; i < text.Length - k; i++)
-            {
-                if (Count[i] == maxCount)
-                {
-                    frequent_patterns = (string[])frequent_patterns.Append(text.Substring(i, k));
-                }               
-            }
-
-            frequent_patterns = frequent_patterns.Distinct().ToArray();
-            //usuń duplikaty z FrequentPatterns
-
-            return frequent_patterns;            
-        }
-
-        private int PatternCount(String text, String pattern)
-        {
+            int count = 0;
             for (int i = 0; i < (text.Length - pattern.Length); i++)
             {
                 if (text.Substring(i, pattern.Length) == pattern)
@@ -68,7 +48,6 @@ namespace lab5
                     count++;
                 }
             }
-
             return count;
         }
 

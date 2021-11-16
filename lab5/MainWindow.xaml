@@ -26,40 +26,18 @@
             Height="37"
             Width="150"/>
 
-        <ComboBox Name="cbox"
-            ItemsSource="{Binding}"
-            SelectionChanged="cbox_SelectionChanged"     
-            Text="Wybierz"
-            IsEditable="True"
-            IsReadOnly="True"  
+        <ComboBox Name="cbox"                       
+            SelectionChanged="cbox_SelectionChanged"
             HorizontalAlignment="Left"
             Margin="49,164,0,0"
             VerticalAlignment="Top"
-            Width="150">
-                <ComboBoxItem>ComboBox Item #1</ComboBoxItem>
-                <ComboBoxItem>ComboBox Item #2</ComboBoxItem>
-                <ComboBoxItem>ComboBox Item #3</ComboBoxItem>
-
-        </ComboBox>                
+            Width="150"/>
+        
+        <RichTextBox x:Name="rich"
             
-        <!--<TextBlock Text="Select Something" IsHitTestVisible="False">
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Visibility" Value="Hidden"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=cbox,Path=SelectedItem}" Value="{x:Null}">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>-->
-
-        <TextBox x:Name="seq_txtbox"
-            Text="TextBox"
             HorizontalAlignment="Left"
             Margin="219,41,0,0"
-            TextWrapping="Wrap"
+            
             AcceptsReturn="True"
             HorizontalScrollBarVisibility="Disabled"
             VerticalScrollBarVisibility="Auto"
@@ -68,7 +46,7 @@
             Height="328"/>
         
         <TextBox x:Name="subseq_count_txtbox"
-            Text="TextBox"
+            
             TextWrapping="Wrap"
             AcceptsReturn="True"
             HorizontalScrollBarVisibility="Disabled"
