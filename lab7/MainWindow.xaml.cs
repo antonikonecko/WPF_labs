@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,10 @@ namespace lab7
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Czytelnik> czytelnikList;
-        List<Ksiazka> ksiazkaList;
-
+        public List<Czytelnik> czytelnikList;
+        public List<Ksiazka> ksiazkaList;
+        Collection<Ksiazka> ksiazkaCollection;
+        Collection<Czytelnik> czytelnikCollection;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace lab7
             lvCzytelnicy.ItemsSource = czytelnikList;
             lvKsiazki.ItemsSource = ksiazkaList;   
         }
-
+         
         private void SampleCzytelnikBtn_Click(object sender, RoutedEventArgs e)
         {
             this.DataContext = this;
@@ -66,12 +68,16 @@ namespace lab7
 
         private void DodajCzytelnikBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            AddReaderWindow addReaderWindow = new();
+            addReaderWindow.Owner = this;
+            addReaderWindow.ShowDialog();
         }
 
         private void DodajKsiazkaBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            AddBookWindow addBookWindow = new();
+            addBookWindow.Owner = this;
+            addBookWindow.ShowDialog();
         }
 
 
@@ -80,7 +86,7 @@ namespace lab7
 
 
 
-    class Czytelnik
+    public class Czytelnik
     {
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
@@ -96,7 +102,7 @@ namespace lab7
     }
 
 
-    class Ksiazka
+    public class Ksiazka
     {
         public string Tytul { get; set; }
         public string Autor { get; set; }
@@ -104,13 +110,13 @@ namespace lab7
         public string Wypozyczona { get; set; }
 
         public Ksiazka() { }
-        public Ksiazka(string Tytul, string Autor, string ID, string Wypozyczona) 
-        {
-            this.Tytul = Tytul;
-            this.Autor = Autor;
-            this.ID = ID;
-            this.Wypozyczona = Wypozyczona;
-        }
+        //public Ksiazka(string Tytul, string Autor, string ID, string Wypozyczona) 
+        //{
+        //    this.Tytul = Tytul;
+        //    this.Autor = Autor;
+        //    this.ID = ID;
+        //    this.Wypozyczona = Wypozyczona;
+        //}
     }
 
 
