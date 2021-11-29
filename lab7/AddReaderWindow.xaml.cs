@@ -40,11 +40,11 @@ namespace lab7
             if (TextNotEmpty())
             {
 
-                ((MainWindow)this.Owner).czytelnikList.Add(new Czytelnik()
+                ((MainWindow)this.Owner).czytelnikCollection.Add(new Czytelnik()
                 {
                     Imie = TextBoxImie.Text,
                     Nazwisko = TextBoxNazwisko.Text,
-                    ID = TextBoxID.Text,//Guid.NewGuid().ToString(),
+                    CzytelnikID = TextBoxID.Text,//Guid.NewGuid().ToString(),
                     
 
                 });
@@ -55,7 +55,7 @@ namespace lab7
 
             }
 
-            ((MainWindow)this.Owner).lvCzytelnicy.Items.Refresh();
+            
         }
         
         

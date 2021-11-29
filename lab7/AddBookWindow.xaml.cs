@@ -45,11 +45,11 @@ namespace lab7
             if (TextNotEmpty())
             {
 
-                ((MainWindow)this.Owner).ksiazkaList.Add(new Ksiazka()
+                ((MainWindow)this.Owner).ksiazkaCollection.Add(new Ksiazka()
                 {
                     Tytul = TextBoxTytul.Text,
                     Autor = TextBoxAutor.Text,
-                    ID = TextBoxID.Text,//Guid.NewGuid().ToString(),
+                    KsiazkaID = TextBoxID.Text,//Guid.NewGuid().ToString(),
                     Wypozyczona = false,
                         
                 });
@@ -60,7 +60,7 @@ namespace lab7
 
             }
             
-            ((MainWindow)this.Owner).lvKsiazki.Items.Refresh();
+            
         }
     }
 }

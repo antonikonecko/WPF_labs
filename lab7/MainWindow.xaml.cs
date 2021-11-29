@@ -20,40 +20,38 @@ namespace lab7
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-        public List<Czytelnik> czytelnikList;
-        public List<Ksiazka> ksiazkaList;
-        Collection<Ksiazka> ksiazkaCollection;
-        Collection<Czytelnik> czytelnikCollection;
+    {       
+        public ObservableCollection<Ksiazka> ksiazkaCollection;
+        public ObservableCollection<Czytelnik> czytelnikCollection;
         public MainWindow()
         {
             InitializeComponent();
 
-           
-            czytelnikList = new List<Czytelnik>();
-            ksiazkaList = new List<Ksiazka>();            
-            lvCzytelnicy.ItemsSource = czytelnikList;
-            lvKsiazki.ItemsSource = ksiazkaList;
+            ksiazkaCollection = new();
+            czytelnikCollection = new();
+            
+            CollectionViewSource ksiazkaCollectionViewSource;
+            ksiazkaCollectionViewSource = (CollectionViewSource)(FindResource("KsiazkaCollectionViewSource"));
+            ksiazkaCollectionViewSource.Source = ksiazkaCollection ;
+
+            CollectionViewSource czytelnikCollectionViewSource;
+            czytelnikCollectionViewSource = (CollectionViewSource)(FindResource("CzytelnikCollectionViewSource"));
+            czytelnikCollectionViewSource.Source = czytelnikCollection;
         }
          
         private void SampleCzytelnikBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.DataContext = this;
+        {            
             InitializeComponent();
-            czytelnikList.Add(new Czytelnik() { Imie = "Imie 1", Nazwisko = "Nazwisko 1" });
-            czytelnikList.Add(new Czytelnik() { Imie = "Imie 2", Nazwisko = "Nazwisko 2" });
-            czytelnikList.Add(new Czytelnik() { Imie = "Imie 3", Nazwisko = "Nazwisko 3" });
-
-            lvCzytelnicy.Items.Refresh();
+            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 1", Nazwisko = "Nazwisko 1", CzytelnikID = "ID 1" });
+            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 2", Nazwisko = "Nazwisko 2", CzytelnikID = "ID 2" });
+            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 3", Nazwisko = "Nazwisko 3", CzytelnikID = "ID 3" });
         }
         private void SampleKsiazkaBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.DataContext = this;
+        {            
             InitializeComponent();
-            ksiazkaList.Add(new Ksiazka() { Tytul = "Tytuł 1", Autor = "Autor 1", ID = "ID 1", Wypozyczona = false });
-          
-
-            lvKsiazki.Items.Refresh();
+            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 1", Autor = "Imie Nazwisko 1", KsiazkaID = "ID 1", Wypozyczona = false });
+            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 2", Autor = "Imie Nazwisko 2", KsiazkaID = "ID 2", Wypozyczona = false });
+            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 3", Autor = "Imie Nazwisko 3", KsiazkaID = "ID 3", Wypozyczona = false });
         }
 
         private void WypozyczBtn_Click(object sender, RoutedEventArgs e)
@@ -90,14 +88,14 @@ namespace lab7
     {
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
-        public string ID { get; set; }
+        public string CzytelnikID { get; set; }
 
         public Czytelnik() { }
-        public Czytelnik(string Imie, string Nazwisko, string ID)
+        public Czytelnik(string Imie, string Nazwisko, string CzytelnikID)
         {
             this.Imie = Imie;
             this.Nazwisko = Nazwisko;
-            this.ID = ID;
+            this.CzytelnikID = CzytelnikID;
         }
     }
 
@@ -106,17 +104,17 @@ namespace lab7
     {
         public string Tytul { get; set; }
         public string Autor { get; set; }
-        public string ID { get; set; }
+        public string KsiazkaID { get; set; }
         public bool Wypozyczona { get; set; }
 
         public Ksiazka() { }
-        //public Ksiazka(string Tytul, string Autor, string ID, string Wypozyczona) 
-        //{
-        //    this.Tytul = Tytul;
-        //    this.Autor = Autor;
-        //    this.ID = ID;
-        //    this.Wypozyczona = Wypozyczona;
-        //}
+        public Ksiazka(string Tytul, string Autor, string KsiazkaID)
+        {
+            this.Tytul = Tytul;
+            this.Autor = Autor;
+            this.KsiazkaID = KsiazkaID;
+            
+        }
     }
 
 

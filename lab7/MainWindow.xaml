@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:lab7"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <CollectionViewSource x:Key="KsiazkaCollectionViewSource"   CollectionViewType="ListCollectionView"/>
+        <CollectionViewSource x:Key="CzytelnikCollectionViewSource" CollectionViewType="ListCollectionView"/>
+    </Window.Resources>
     <Grid Background ="Gray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width = "0.2*"/>
@@ -18,8 +22,7 @@
             <ColumnDefinition Width = "*"/>
             <ColumnDefinition Width = "*"/>
             <ColumnDefinition Width = "*"/>
-            <ColumnDefinition Width = "0.2*"/>
-            
+            <ColumnDefinition Width = "0.2*"/>            
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height = "0.3*"/>
@@ -32,32 +35,41 @@
             <RowDefinition Height = "0.8*"/>
             <RowDefinition Height = "0.3*"/>
         </Grid.RowDefinitions>
-        <ListView x:Name = "lvCzytelnicy" FontSize="14"  Background = "LightGray" Grid.Row="1" Grid.Column = "1" Grid.RowSpan="5" Grid.ColumnSpan="3" >
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn x:Name = "ColImie"        Header="Imie"     DisplayMemberBinding = "{Binding Path=Imie}"        Width = "Auto"/>
-                    <GridViewColumn x:Name = "ColNazwisko"    Header="Nazwisko" DisplayMemberBinding = "{Binding Path=Nazwisko}"    Width = "Auto"/>
-                    <GridViewColumn x:Name = "ColCzytelnikID" Header="ID"       DisplayMemberBinding = "{Binding Path=ID}" Width = "Auto"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <DataGrid x:Name = "lvKsiazki"
-                  FontSize="14"  Background = "LightGray" Grid.Row="1" Grid.Column = "7" Grid.RowSpan="5" Grid.ColumnSpan="3" >            
-                <DataGrid.Columns>
-                    <DataGridTextColumn x:Name = "ColTytul"       Header="Tytul"           Binding = "{Binding Path=Tytul}"       Width = "Auto" />
-                    <DataGridTextColumn x:Name = "ColAutor"       Header="Autor"           Binding = "{Binding Path=Autor}"       Width = "Auto" />
-                    <DataGridTextColumn x:Name = "ColKsiazkaID"   Header="ID"              Binding = "{Binding Path=ID}"   Width = "Auto" />
-                    <DataGridCheckBoxColumn x:Name = "ColWypozyczona" Header="Wypozyczona" Binding = "{Binding Path=Wypozyczona}" Width = "Auto" />                    
-                </DataGrid.Columns>            
+        <DataGrid x:Name = "lvCzytelnicy"
+                  DataContext="{StaticResource CzytelnikCollectionViewSource}"
+                  ItemsSource="{Binding}"
+                  CanUserAddRows="False"
+                  AutoGenerateColumns="False"                  
+                  FontSize="14"    Background = "LightGray" 
+                  Grid.Row="1"     Grid.Column = "1" 
+                  Grid.RowSpan="5" Grid.ColumnSpan="3" >
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name = "ColImie"        Header="Imie"     Binding = "{Binding Path=Imie}" />
+                <DataGridTextColumn x:Name = "ColNazwisko"    Header="Nazwisko" Binding = "{Binding Path=Nazwisko}" />
+                <DataGridTextColumn x:Name = "ColCzytelnikID" Header="ID"       Binding = "{Binding Path=CzytelnikID}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name = "lvKsiazki"                  
+                  DataContext="{StaticResource KsiazkaCollectionViewSource}"
+                  ItemsSource="{Binding}"
+                  CanUserAddRows="False"
+                  AutoGenerateColumns="False"
+                  FontSize="14"    Background = "LightGray" 
+                  Grid.Row="1"     Grid.Column = "7" 
+                  Grid.RowSpan="5" Grid.ColumnSpan="3" >
+            <DataGrid.Columns>
+                <DataGridTextColumn     x:Name = "ColTytul"       Header="Tytul"       Binding = "{Binding Path=Tytul}" />
+                <DataGridTextColumn     x:Name = "ColAutor"       Header="Autor"       Binding = "{Binding Path=Autor}" />
+                <DataGridTextColumn     x:Name = "ColKsiazkaID"   Header="ID"          Binding = "{Binding Path=KsiazkaID}" />
+                <DataGridCheckBoxColumn x:Name = "ColWypozyczona" Header="Wypozyczona" Binding = "{Binding Path=Wypozyczona}" />
+            </DataGrid.Columns>
+
         </DataGrid>        
-        <Button Grid.Row="2" Grid.Column = "5" x:Name = "WypozyczBtn"       Content = "Wypozycz"         Click="WypozyczBtn_Click" />
-        <Button Grid.Row="4" Grid.Column = "5" x:Name = "OddajBtn"          Content = "Oddaj"            Click="OddajBtn_Click"  />
-        <Button Grid.Row="7" Grid.Column = "2" x:Name = "DodajCzytelnikBtn" Content = "Dodaj czytelnika" Click="DodajCzytelnikBtn_Click" />
-        <Button Grid.Row="7" Grid.Column = "8" x:Name = "DodajKsiazkaBtn"   Content = "Dodaj ksiazke"    Click="DodajKsiazkaBtn_Click" />
+        <Button Grid.Row="2" Grid.Column = "5" x:Name = "WypozyczBtn"        Content = "Wypozycz"         Click="WypozyczBtn_Click" />
+        <Button Grid.Row="4" Grid.Column = "5" x:Name = "OddajBtn"           Content = "Oddaj"            Click="OddajBtn_Click"  />
+        <Button Grid.Row="7" Grid.Column = "2" x:Name = "DodajCzytelnikBtn"  Content = "Dodaj czytelnika" Click="DodajCzytelnikBtn_Click" />
+        <Button Grid.Row="7" Grid.Column = "8" x:Name = "DodajKsiazkaBtn"    Content = "Dodaj ksiazke"    Click="DodajKsiazkaBtn_Click" />
         <Button Grid.Row="7" Grid.Column = "3" x:Name = "SampleCzytelnikBtn" Content = "Sample czytelnik" Click="SampleCzytelnikBtn_Click" />
-        <Button Grid.Row="7" Grid.Column = "7" x:Name = "SampleKsiazkaBtn"   Content = "Sample ksiazka"    Click="SampleKsiazkaBtn_Click" />
-        
-
-
+        <Button Grid.Row="7" Grid.Column = "7" x:Name = "SampleKsiazkaBtn"   Content = "Sample ksiazka"   Click="SampleKsiazkaBtn_Click" />      
     </Grid>
 </Window>
