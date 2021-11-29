@@ -50,7 +50,7 @@ namespace lab7
                     Tytul = TextBoxTytul.Text,
                     Autor = TextBoxAutor.Text,
                     ID = TextBoxID.Text,//Guid.NewGuid().ToString(),
-                    Wypozyczona = TextBoxWypozyczona.Text,
+                    Wypozyczona = false,
                         
                 });
                 TextBoxTytul.Text = "";

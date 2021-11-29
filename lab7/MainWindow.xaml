@@ -41,16 +41,15 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name = "lvKsiazki" FontSize="14"  Background = "LightGray" Grid.Row="1" Grid.Column = "7" Grid.RowSpan="5" Grid.ColumnSpan="3" >
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn x:Name = "ColTytul"       Header="Tytul"       DisplayMemberBinding = "{Binding Path=Tytul}"       Width = "Auto" />
-                    <GridViewColumn x:Name = "ColAutor"       Header="Autor"       DisplayMemberBinding = "{Binding Path=Autor}"       Width = "Auto" />
-                    <GridViewColumn x:Name = "ColKsiazkaID"   Header="ID"          DisplayMemberBinding = "{Binding Path=ID}"   Width = "Auto" />
-                    <GridViewColumn x:Name = "ColWypozyczona" Header="Wypozyczona" DisplayMemberBinding = "{Binding Path=Wypozyczona}" Width = "Auto" />                    
-                </GridView>
-            </ListView.View>
-        </ListView>        
+        <DataGrid x:Name = "lvKsiazki"
+                  FontSize="14"  Background = "LightGray" Grid.Row="1" Grid.Column = "7" Grid.RowSpan="5" Grid.ColumnSpan="3" >            
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name = "ColTytul"       Header="Tytul"           Binding = "{Binding Path=Tytul}"       Width = "Auto" />
+                    <DataGridTextColumn x:Name = "ColAutor"       Header="Autor"           Binding = "{Binding Path=Autor}"       Width = "Auto" />
+                    <DataGridTextColumn x:Name = "ColKsiazkaID"   Header="ID"              Binding = "{Binding Path=ID}"   Width = "Auto" />
+                    <DataGridCheckBoxColumn x:Name = "ColWypozyczona" Header="Wypozyczona" Binding = "{Binding Path=Wypozyczona}" Width = "Auto" />                    
+                </DataGrid.Columns>            
+        </DataGrid>        
         <Button Grid.Row="2" Grid.Column = "5" x:Name = "WypozyczBtn"       Content = "Wypozycz"         Click="WypozyczBtn_Click" />
         <Button Grid.Row="4" Grid.Column = "5" x:Name = "OddajBtn"          Content = "Oddaj"            Click="OddajBtn_Click"  />
         <Button Grid.Row="7" Grid.Column = "2" x:Name = "DodajCzytelnikBtn" Content = "Dodaj czytelnika" Click="DodajCzytelnikBtn_Click" />

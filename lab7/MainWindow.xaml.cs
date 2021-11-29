@@ -29,10 +29,11 @@ namespace lab7
         {
             InitializeComponent();
 
+           
             czytelnikList = new List<Czytelnik>();
             ksiazkaList = new List<Ksiazka>();            
             lvCzytelnicy.ItemsSource = czytelnikList;
-            lvKsiazki.ItemsSource = ksiazkaList;   
+            lvKsiazki.ItemsSource = ksiazkaList;
         }
          
         private void SampleCzytelnikBtn_Click(object sender, RoutedEventArgs e)
@@ -49,9 +50,8 @@ namespace lab7
         {
             this.DataContext = this;
             InitializeComponent();
-            ksiazkaList.Add(new Ksiazka() { Tytul = "Tytuł 1", Autor = "Autor 1", ID = "ID 1", Wypozyczona = "Wypozyczona 1" });
-            ksiazkaList.Add(new Ksiazka() { Tytul = "Tytuł 2", Autor = "Autor 2", ID = "ID 2", Wypozyczona = "Wypozyczona 2" });
-            ksiazkaList.Add(new Ksiazka() { Tytul = "Tytuł 3", Autor = "Autor 3", ID = "ID 3", Wypozyczona = "Wypozyczona 3" });
+            ksiazkaList.Add(new Ksiazka() { Tytul = "Tytuł 1", Autor = "Autor 1", ID = "ID 1", Wypozyczona = false });
+          
 
             lvKsiazki.Items.Refresh();
         }
@@ -107,7 +107,7 @@ namespace lab7
         public string Tytul { get; set; }
         public string Autor { get; set; }
         public string ID { get; set; }
-        public string Wypozyczona { get; set; }
+        public bool Wypozyczona { get; set; }
 
         public Ksiazka() { }
         //public Ksiazka(string Tytul, string Autor, string ID, string Wypozyczona) 
