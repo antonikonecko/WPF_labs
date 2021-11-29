@@ -1,0 +1,64 @@
+﻿<Window x:Class="lab7.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab7"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background ="Gray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "0.2*"/>
+            <ColumnDefinition Width = "*"/>
+            <ColumnDefinition Width = "*"/>
+            <ColumnDefinition Width = "*"/>
+            <ColumnDefinition Width = "0.2*"/>
+            <ColumnDefinition Width = "*"/>
+            <ColumnDefinition Width = "0.2*"/>
+            <ColumnDefinition Width = "*"/>
+            <ColumnDefinition Width = "*"/>
+            <ColumnDefinition Width = "*"/>
+            <ColumnDefinition Width = "0.2*"/>
+            
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "0.3*"/>
+            <RowDefinition Height = "*"/>
+            <RowDefinition Height = "0.8*"/>
+            <RowDefinition Height = "0.3*"/>
+            <RowDefinition Height = "0.8*"/>
+            <RowDefinition Height = "0.5*"/>
+            <RowDefinition Height = "0.3*"/>
+            <RowDefinition Height = "0.8*"/>
+            <RowDefinition Height = "0.3*"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name = "lvCzytelnicy" FontSize="14"  Background = "LightGray" Grid.Row="1" Grid.Column = "1" Grid.RowSpan="5" Grid.ColumnSpan="3" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name = "ColImie"        Header="Imie"     DisplayMemberBinding = "{Binding Path=Imie}"        Width = "Auto"/>
+                    <GridViewColumn x:Name = "ColNazwisko"    Header="Nazwisko" DisplayMemberBinding = "{Binding Path=Nazwisko}"    Width = "Auto"/>
+                    <GridViewColumn x:Name = "ColCzytelnikID" Header="ID"       DisplayMemberBinding = "{Binding Path=ID}" Width = "Auto"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name = "lvKsiazki" FontSize="14"  Background = "LightGray" Grid.Row="1" Grid.Column = "7" Grid.RowSpan="5" Grid.ColumnSpan="3" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name = "ColTytul"       Header="Tytul"       DisplayMemberBinding = "{Binding Path=Tytul}"       Width = "Auto" />
+                    <GridViewColumn x:Name = "ColAutor"       Header="Autor"       DisplayMemberBinding = "{Binding Path=Autor}"       Width = "Auto" />
+                    <GridViewColumn x:Name = "ColKsiazkaID"   Header="ID"          DisplayMemberBinding = "{Binding Path=ID}"   Width = "Auto" />
+                    <GridViewColumn x:Name = "ColWypozyczona" Header="Wypozyczona" DisplayMemberBinding = "{Binding Path=Wypozyczona}" Width = "Auto" />                    
+                </GridView>
+            </ListView.View>
+        </ListView>        
+        <Button Grid.Row="2" Grid.Column = "5" x:Name = "WypozyczBtn"       Content = "Wypozycz"         Click="WypozyczBtn_Click" />
+        <Button Grid.Row="4" Grid.Column = "5" x:Name = "OddajBtn"          Content = "Oddaj"            Click="OddajBtn_Click"  />
+        <Button Grid.Row="7" Grid.Column = "2" x:Name = "DodajCzytelnikBtn" Content = "Dodaj czytelnika" Click="DodajCzytelnikBtn_Click" />
+        <Button Grid.Row="7" Grid.Column = "8" x:Name = "DodajKsiazkaBtn"   Content = "Dodaj ksiazke"    Click="DodajKsiazkaBtn_Click" />
+        <Button Grid.Row="7" Grid.Column = "3" x:Name = "SampleCzytelnikBtn" Content = "Sample czytelnik" Click="SampleCzytelnikBtn_Click" />
+        <Button Grid.Row="7" Grid.Column = "7" x:Name = "SampleKsiazkaBtn"   Content = "Sample ksiazka"    Click="SampleKsiazkaBtn_Click" />
+        
+
+
+    </Grid>
+</Window>
