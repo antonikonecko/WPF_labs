@@ -37,25 +37,26 @@ namespace lab7
             ksiazkaCollection = new();
             czytelnikCollection = new();
             wypozyczone_ksiazki = new();
-            dostepne_ksiazki = new();
-            CollectionViewSource ksiazkaCollectionViewSource;
-            ksiazkaCollectionViewSource = (CollectionViewSource)(FindResource("KsiazkaCollectionViewSource"));
-            ksiazkaCollectionViewSource.Source = ksiazkaCollection ;
-
-            CollectionViewSource czytelnikCollectionViewSource;
-            czytelnikCollectionViewSource = (CollectionViewSource)(FindResource("CzytelnikCollectionViewSource"));
-            czytelnikCollectionViewSource.Source = czytelnikCollection;
+            dostepne_ksiazki = new();           
 
             string default_K_File;
             string default_C_File;
             default_K_File = ConfigurationManager.AppSettings.Get("recent_K_data");
             default_C_File = ConfigurationManager.AppSettings.Get("recent_C_data");
-            if (default_C_File != "" && default_K_File != "")
+            if (File.Exists(default_C_File) && File.Exists(default_K_File) && default_C_File != "" && default_K_File != "") //(default_C_File != "" && default_K_File != "")
             {
-                MessageBox.Show("import poprzednich plikow");
+                MessageBox.Show("Import poprzednich plikow");
                 importXmlK(default_K_File);
                 importXmlC(default_C_File);
             }
+            else { MessageBox.Show("Pliki nie istnieją"); }
+
+            CollectionViewSource ksiazkaCollectionViewSource;
+            ksiazkaCollectionViewSource = (CollectionViewSource)(FindResource("KsiazkaCollectionViewSource"));
+            ksiazkaCollectionViewSource.Source = ksiazkaCollection;
+            CollectionViewSource czytelnikCollectionViewSource;
+            czytelnikCollectionViewSource = (CollectionViewSource)(FindResource("CzytelnikCollectionViewSource"));
+            czytelnikCollectionViewSource.Source = czytelnikCollection;
         }
          
         private void SampleCzytelnikBtn_Click(object sender, RoutedEventArgs e)
@@ -154,9 +155,10 @@ namespace lab7
                 XmlSerializer serializerK = new XmlSerializer(ksiazki.GetType());
                 XmlSerializer serializerC = new XmlSerializer(czytelnicy.GetType());
 
-                string K_filename = savefile.FileName + "K" ;
-                string C_filename = savefile.FileName + "C" ;
-                MessageBox.Show(C_filename);
+                int position = savefile.FileName.IndexOf(".");
+                string K_filename = savefile.FileName.Insert(position, "_K");             
+                string C_filename = savefile.FileName.Insert(position, "_C");                
+
                 using (Stream s = File.Create(C_filename))
                 {
                     serializerC.Serialize(s, czytelnicy);
@@ -167,6 +169,7 @@ namespace lab7
                 }
                 AddUpdateAppSettings("recent_K_data", K_filename);
                 AddUpdateAppSettings("recent_C_data", C_filename);
+                MessageBox.Show(K_filename + "\n" + C_filename, "Zapisane pliki:");
             }
         }
 
@@ -176,8 +179,7 @@ namespace lab7
             MessageBoxResult result = MessageBox.Show("Zapisać dane?", "Zamykanie programu", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {  
-                SaveXml(ksiazkaCollection, czytelnikCollection);                
-                MessageBox.Show("Koniec");
+                SaveXml(ksiazkaCollection, czytelnikCollection);
             }
         }
 
