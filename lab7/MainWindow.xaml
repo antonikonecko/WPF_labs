@@ -38,6 +38,7 @@
             <RowDefinition Height = "0.3*"/>
         </Grid.RowDefinitions>
         <DataGrid x:Name = "dgCzytelnicy"
+                  SelectionUnit="Cell"
                   HorizontalContentAlignment="Left"
                   HeadersVisibility="Column"
                   AlternationCount="2"
@@ -55,7 +56,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name = "ColImie"        Header="Imie"     Binding = "{Binding Path=Imie}" Width="Auto" />
                 <DataGridTextColumn x:Name = "ColNazwisko"    Header="Nazwisko" Binding = "{Binding Path=Nazwisko}"  Width="Auto"/>
-                <DataGridTextColumn x:Name = "ColCzytelnikID" Header="ID"       Binding = "{Binding Path=CzytelnikID}" Width="Auto" />
+                <DataGridTextColumn x:Name = "ColCzytelnikID" Header="ID"       Binding = "{Binding Path=CzytelnikID}" Width="*" />
             </DataGrid.Columns>
             
         </DataGrid>
@@ -77,7 +78,18 @@
                 <DataGridTextColumn     x:Name = "ColTytul"       Header="Tytul"       Binding = "{Binding Path=Tytul}" Width="Auto"/>
                 <DataGridTextColumn     x:Name = "ColAutor"       Header="Autor"       Binding = "{Binding Path=Autor}" Width="Auto"/>
                 <DataGridTextColumn     x:Name = "ColKsiazkaID"   Header="ID"          Binding = "{Binding Path=KsiazkaID}" Width="Auto"/>
-                <DataGridTextColumn     x:Name = "ColWypozyczona" Header="Wypozyczona" Binding = "{Binding Path=Wypozyczona}" Width="Auto"/>
+                <DataGridTextColumn     x:Name = "ColWypozyczona" Header="Wypozyczona" Binding = "{Binding Path=Wypozyczona}" Width="*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Background" Value="PaleVioletRed"/>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="">
+                                    <Setter Property="Background" Value="LightGreen"/>                                    
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>        
         <Button Grid.Row="2" Grid.Column = "5" x:Name = "WypozyczBtn"        Content = "Wypozycz"         Click="WypozyczBtn_Click" />

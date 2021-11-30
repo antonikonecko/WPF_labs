@@ -37,41 +37,47 @@ namespace lab7
             ksiazkaCollection = new();
             czytelnikCollection = new();
             wypozyczone_ksiazki = new();
-            dostepne_ksiazki = new();           
+            dostepne_ksiazki = new();
 
-            string default_K_File;
-            string default_C_File;
-            default_K_File = ConfigurationManager.AppSettings.Get("recent_K_data");
-            default_C_File = ConfigurationManager.AppSettings.Get("recent_C_data");
-            if (File.Exists(default_C_File) && File.Exists(default_K_File) && default_C_File != "" && default_K_File != "") //(default_C_File != "" && default_K_File != "")
-            {
-                MessageBox.Show("Import poprzednich plikow");
-                importXmlK(default_K_File);
-                importXmlC(default_C_File);
-            }
-            else { MessageBox.Show("Pliki nie istnieją"); }
+            MessageBoxResult result = MessageBox.Show("Wczytać zapisaną sesję?", "Witaj", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes) { AskToRestoreSession(); }
 
             CollectionViewSource ksiazkaCollectionViewSource;
             ksiazkaCollectionViewSource = (CollectionViewSource)(FindResource("KsiazkaCollectionViewSource"));
             ksiazkaCollectionViewSource.Source = ksiazkaCollection;
             CollectionViewSource czytelnikCollectionViewSource;
+            dgKsiazki.SelectedItem = null;
             czytelnikCollectionViewSource = (CollectionViewSource)(FindResource("CzytelnikCollectionViewSource"));
             czytelnikCollectionViewSource.Source = czytelnikCollection;
+            dgCzytelnicy.SelectedItem = null;
         }
-         
+        
+        private void AskToRestoreSession()
+        {          
+            string default_K_File;
+            string default_C_File;
+            default_K_File = ConfigurationManager.AppSettings.Get("recent_K_data");
+            default_C_File = ConfigurationManager.AppSettings.Get("recent_C_data");
+            if (File.Exists(default_C_File) && File.Exists(default_K_File) && default_C_File != "" && default_K_File != "") //(default_C_File != "" && default_K_File != "")
+            {                
+                importXmlK(default_K_File);
+                importXmlC(default_C_File);
+            }
+            else { MessageBox.Show("Pliki nie istnieją"); }            
+        }
         private void SampleCzytelnikBtn_Click(object sender, RoutedEventArgs e)
         {            
             InitializeComponent();
-            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 1", Nazwisko = "Nazwisko 1", CzytelnikID = "1" });
-            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 2", Nazwisko = "Nazwisko 2", CzytelnikID = "2" });
-            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 3", Nazwisko = "Nazwisko 3", CzytelnikID = "3" });
+            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 1", Nazwisko = "Nazwisko 1", CzytelnikID = Guid.NewGuid().ToString() });
+            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 2", Nazwisko = "Nazwisko 2", CzytelnikID = Guid.NewGuid().ToString() });
+            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 3", Nazwisko = "Nazwisko 3", CzytelnikID = Guid.NewGuid().ToString() });
         }
         private void SampleKsiazkaBtn_Click(object sender, RoutedEventArgs e)
         {            
             InitializeComponent();
-            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 1", Autor = "Imie Nazwisko 1", KsiazkaID = "1", Wypozyczona = "" });
-            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 2", Autor = "Imie Nazwisko 2", KsiazkaID = "2", Wypozyczona = "" });
-            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 3", Autor = "Imie Nazwisko 3", KsiazkaID = "3", Wypozyczona = "" });
+            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 1", Autor = "Imie Nazwisko 1", KsiazkaID = Guid.NewGuid().ToString(), Wypozyczona = "" });
+            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 2", Autor = "Imie Nazwisko 2", KsiazkaID = Guid.NewGuid().ToString(), Wypozyczona = "" });
+            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 3", Autor = "Imie Nazwisko 3", KsiazkaID = Guid.NewGuid().ToString(), Wypozyczona = "" });
         }
 
         private void WypozyczBtn_Click(object sender, RoutedEventArgs e)
@@ -98,7 +104,8 @@ namespace lab7
             }
             OddajWindow oddajWindow = new(wypozyczone_ksiazki);
             oddajWindow.Owner = this;
-            oddajWindow.ShowDialog();            
+            oddajWindow.ShowDialog();
+            wypozyczone_ksiazki.Clear();
             dgKsiazki.Items.Refresh();
         }
 

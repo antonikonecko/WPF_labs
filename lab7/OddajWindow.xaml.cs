@@ -40,8 +40,7 @@ namespace lab7
             {
                 if (ks.Wypozyczona != "" && ks.KsiazkaID == (string)cbox_wypozyczone.SelectedValue)
                 {
-                    ks.Wypozyczona = "";
-                    ((MainWindow)this.Owner).wypozyczone_ksiazki.Remove(ks);
+                    ks.Wypozyczona = "";                    
                 }
             }
             this.Close();

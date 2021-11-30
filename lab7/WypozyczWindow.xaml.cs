@@ -51,7 +51,6 @@ namespace lab7
                     ks.Wypozyczona = (string)cbox_czytelnik.SelectedValue;                    
                 }
             }
-
             this.Close();
         }
     }
