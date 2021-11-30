@@ -13,8 +13,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="77,123,0,0" TextWrapping="Wrap" Text="Autor" VerticalAlignment="Top"/>
         <TextBox x:Name = "TextBoxID" HorizontalAlignment="Left" Margin="167,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MinWidth="50" MaxWidth="100" MaxHeight="20"  />
         <TextBlock HorizontalAlignment="Left" Margin="77,166,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top"/>
-        <TextBox x:Name = "TextBoxWypozyczona" HorizontalAlignment="Left" Margin="167,213,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MinWidth="50" MaxWidth="100" MaxHeight="20" />
-        <TextBlock HorizontalAlignment="Left" Margin="77,213,0,0" TextWrapping="Wrap" Text="Wypozyczona" VerticalAlignment="Top"/>
+       
         <Button x:Name="AddBookBtn"
                 Click="AddBookBtn_Click"
                 Content="Dodaj ksiązkę" 

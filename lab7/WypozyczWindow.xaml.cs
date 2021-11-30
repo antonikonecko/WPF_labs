@@ -48,8 +48,7 @@ namespace lab7
             {
                 if(ks.Wypozyczona == "" && ks.KsiazkaID == (string)cbox_ksiazka.SelectedValue) 
                 { 
-                    ks.Wypozyczona = (string)cbox_czytelnik.SelectedValue;
-                    ((MainWindow)this.Owner).wypozyczone_ksiazki.Add(ks);
+                    ks.Wypozyczona = (string)cbox_czytelnik.SelectedValue;                    
                 }
             }
 

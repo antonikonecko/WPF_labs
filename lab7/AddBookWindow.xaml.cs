@@ -32,7 +32,7 @@ namespace lab7
 
         private bool TextNotEmpty()
         {
-            if (TextBoxTytul.Text !="" && TextBoxAutor.Text !="" && TextBoxID.Text != "" && TextBoxWypozyczona.Text != "" )
+            if (TextBoxTytul.Text !="" && TextBoxAutor.Text !="" && TextBoxID.Text != "" )
             {
                 return true;
             }
@@ -44,7 +44,6 @@ namespace lab7
             
             if (TextNotEmpty())
             {
-
                 ((MainWindow)this.Owner).ksiazkaCollection.Add(new Ksiazka()
                 {
                     Tytul = TextBoxTytul.Text,
@@ -55,10 +54,7 @@ namespace lab7
                 TextBoxTytul.Text = "";
                 TextBoxAutor.Text = "";
                 TextBoxID.Text = "";
-                TextBoxWypozyczona.Text = "";
-
-            }
-            
+            }            
             
         }
     }

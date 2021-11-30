@@ -62,16 +62,16 @@ namespace lab7
         private void SampleCzytelnikBtn_Click(object sender, RoutedEventArgs e)
         {            
             InitializeComponent();
-            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 1", Nazwisko = "Nazwisko 1", CzytelnikID = "ID 1" });
-            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 2", Nazwisko = "Nazwisko 2", CzytelnikID = "ID 2" });
-            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 3", Nazwisko = "Nazwisko 3", CzytelnikID = "ID 3" });
+            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 1", Nazwisko = "Nazwisko 1", CzytelnikID = "1" });
+            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 2", Nazwisko = "Nazwisko 2", CzytelnikID = "2" });
+            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 3", Nazwisko = "Nazwisko 3", CzytelnikID = "3" });
         }
         private void SampleKsiazkaBtn_Click(object sender, RoutedEventArgs e)
         {            
             InitializeComponent();
-            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 1", Autor = "Imie Nazwisko 1", KsiazkaID = "ID 1", Wypozyczona = "" });
-            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 2", Autor = "Imie Nazwisko 2", KsiazkaID = "ID 2", Wypozyczona = "" });
-            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 3", Autor = "Imie Nazwisko 3", KsiazkaID = "ID 3", Wypozyczona = "" });
+            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 1", Autor = "Imie Nazwisko 1", KsiazkaID = "1", Wypozyczona = "" });
+            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 2", Autor = "Imie Nazwisko 2", KsiazkaID = "2", Wypozyczona = "" });
+            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 3", Autor = "Imie Nazwisko 3", KsiazkaID = "3", Wypozyczona = "" });
         }
 
         private void WypozyczBtn_Click(object sender, RoutedEventArgs e)
@@ -92,7 +92,10 @@ namespace lab7
 
         private void OddajBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            foreach (Ksiazka k in ksiazkaCollection)
+            {
+                if (k.Wypozyczona != "") { wypozyczone_ksiazki.Add(k); }
+            }
             OddajWindow oddajWindow = new(wypozyczone_ksiazki);
             oddajWindow.Owner = this;
             oddajWindow.ShowDialog();            
