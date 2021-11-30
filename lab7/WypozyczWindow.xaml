@@ -14,9 +14,11 @@
                 Margin="288,115,0,0" 
                 VerticalAlignment="Top" 
                 Height="80" Width="134"  />
-        <ComboBox x:Name="cbox_ksiazka"                  
+        <ComboBox x:Name="cbox_ksiazka"
+                  SelectionChanged="cbox_ksiazka_SelectionChanged"
                   HorizontalAlignment="Left" Margin="97,115,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cbox_czytelnik"            
+        <ComboBox x:Name="cbox_czytelnik"        
+                  SelectionChanged="cbox_czytelnik_SelectionChanged"
             HorizontalAlignment="Left" Margin="97,173,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock TextAlignment="Center"
             HorizontalAlignment="Left" Margin="97,147,0,0" TextWrapping="Wrap"

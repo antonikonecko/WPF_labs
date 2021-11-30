@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="OddajWindow" Background ="Gray" Height="301" Width="509">
     <Grid>
-        <ComboBox x:Name="cbox_wypozyczone"            
+        <ComboBox x:Name="cbox_wypozyczone"
+                  SelectionChanged="cbox_wypozyczone_SelectionChanged"
             HorizontalAlignment="Left" Margin="96,164,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock TextAlignment="Center"
             HorizontalAlignment="Left" Margin="96,138,0,0" TextWrapping="Wrap"

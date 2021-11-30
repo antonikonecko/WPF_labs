@@ -27,7 +27,7 @@ namespace lab7
 
         private bool TextNotEmpty()
         {
-            if (TextBoxImie.Text != "" && TextBoxNazwisko.Text != "" && TextBoxID.Text != "")
+            if (TextBoxImie.Text != "" && TextBoxNazwisko.Text != "" )
             {
                 return true;
             }
@@ -44,13 +44,12 @@ namespace lab7
                 {
                     Imie = TextBoxImie.Text,
                     Nazwisko = TextBoxNazwisko.Text,
-                    CzytelnikID = TextBoxID.Text,//Guid.NewGuid().ToString(),
+                    CzytelnikID = ((MainWindow)this.Owner).GuidEncodeBase64(),
                     
 
                 });
                 TextBoxImie.Text = "";
-                TextBoxNazwisko.Text = "";
-                TextBoxID.Text = "";
+                TextBoxNazwisko.Text = "";              
                 
 
             }

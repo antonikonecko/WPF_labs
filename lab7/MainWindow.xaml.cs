@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -30,6 +31,7 @@ namespace lab7
         
         public ObservableCollection<Ksiazka> dostepne_ksiazki;
         public ObservableCollection<Ksiazka> wypozyczone_ksiazki;
+        public Guid g;
         public MainWindow()
         {
             InitializeComponent();
@@ -50,8 +52,15 @@ namespace lab7
             czytelnikCollectionViewSource = (CollectionViewSource)(FindResource("CzytelnikCollectionViewSource"));
             czytelnikCollectionViewSource.Source = czytelnikCollection;
             dgCzytelnicy.SelectedItem = null;
+
         }
-        
+        public string GuidEncodeBase64() 
+        {
+            g = Guid.NewGuid();
+            var a = Convert.ToBase64String(g.ToByteArray());
+            return a;           
+        }
+
         private void AskToRestoreSession()
         {          
             string default_K_File;
@@ -68,16 +77,16 @@ namespace lab7
         private void SampleCzytelnikBtn_Click(object sender, RoutedEventArgs e)
         {            
             InitializeComponent();
-            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 1", Nazwisko = "Nazwisko 1", CzytelnikID = Guid.NewGuid().ToString() });
-            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 2", Nazwisko = "Nazwisko 2", CzytelnikID = Guid.NewGuid().ToString() });
-            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 3", Nazwisko = "Nazwisko 3", CzytelnikID = Guid.NewGuid().ToString() });
+            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 1", Nazwisko = "Nazwisko 1", CzytelnikID = GuidEncodeBase64() });
+            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 2", Nazwisko = "Nazwisko 2", CzytelnikID = GuidEncodeBase64() });
+            czytelnikCollection.Add(new Czytelnik() { Imie = "Imie 3", Nazwisko = "Nazwisko 3", CzytelnikID = GuidEncodeBase64() });
         }
         private void SampleKsiazkaBtn_Click(object sender, RoutedEventArgs e)
         {            
             InitializeComponent();
-            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 1", Autor = "Imie Nazwisko 1", KsiazkaID = Guid.NewGuid().ToString(), Wypozyczona = "" });
-            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 2", Autor = "Imie Nazwisko 2", KsiazkaID = Guid.NewGuid().ToString(), Wypozyczona = "" });
-            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 3", Autor = "Imie Nazwisko 3", KsiazkaID = Guid.NewGuid().ToString(), Wypozyczona = "" });
+            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 1", Autor = "Imie Nazwisko 1", KsiazkaID = GuidEncodeBase64(), Wypozyczona = "" });
+            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 2", Autor = "Imie Nazwisko 2", KsiazkaID = GuidEncodeBase64(), Wypozyczona = "" });
+            ksiazkaCollection.Add(new Ksiazka() { Tytul = "Tytuł Ksiazki 3", Autor = "Imie Nazwisko 3", KsiazkaID = GuidEncodeBase64(), Wypozyczona = "" });
         }
 
         private void WypozyczBtn_Click(object sender, RoutedEventArgs e)

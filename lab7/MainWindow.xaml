@@ -38,7 +38,7 @@
             <RowDefinition Height = "0.3*"/>
         </Grid.RowDefinitions>
         <DataGrid x:Name = "dgCzytelnicy"
-                  SelectionUnit="Cell"
+                  
                   HorizontalContentAlignment="Left"
                   HeadersVisibility="Column"
                   AlternationCount="2"
@@ -53,6 +53,9 @@
                   FontSize="14"    Background = "DarkGray" 
                   Grid.Row="1"     Grid.Column = "1" 
                   Grid.RowSpan="5" Grid.ColumnSpan="3" >
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="NavajoWhite"/>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name = "ColImie"        Header="Imie"     Binding = "{Binding Path=Imie}" Width="Auto" />
                 <DataGridTextColumn x:Name = "ColNazwisko"    Header="Nazwisko" Binding = "{Binding Path=Nazwisko}"  Width="Auto"/>
@@ -74,7 +77,13 @@
                   FontSize="14"    Background = "DarkGray" 
                   Grid.Row="1"     Grid.Column = "7" 
                   Grid.RowSpan="5" Grid.ColumnSpan="3" >
+            <DataGrid.Resources>                
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="NavajoWhite"/>
+            </DataGrid.Resources>
+
             <DataGrid.Columns>
+                
+                
                 <DataGridTextColumn     x:Name = "ColTytul"       Header="Tytul"       Binding = "{Binding Path=Tytul}" Width="Auto"/>
                 <DataGridTextColumn     x:Name = "ColAutor"       Header="Autor"       Binding = "{Binding Path=Autor}" Width="Auto"/>
                 <DataGridTextColumn     x:Name = "ColKsiazkaID"   Header="ID"          Binding = "{Binding Path=KsiazkaID}" Width="Auto"/>
@@ -97,6 +106,7 @@
         <Button Grid.Row="7" Grid.Column = "2" x:Name = "DodajCzytelnikBtn"  Content = "Dodaj czytelnika" Click="DodajCzytelnikBtn_Click" />
         <Button Grid.Row="7" Grid.Column = "8" x:Name = "DodajKsiazkaBtn"    Content = "Dodaj ksiazke"    Click="DodajKsiazkaBtn_Click" />
         <Button Grid.Row="7" Grid.Column = "3" x:Name = "SampleCzytelnikBtn" Content = "Sample czytelnik" Click="SampleCzytelnikBtn_Click" />
-        <Button Grid.Row="7" Grid.Column = "7" x:Name = "SampleKsiazkaBtn"   Content = "Sample ksiazka"   Click="SampleKsiazkaBtn_Click" />      
+        <Button Grid.Row="7" Grid.Column = "7" x:Name = "SampleKsiazkaBtn"   Content = "Sample ksiazka"   Click="SampleKsiazkaBtn_Click" />
+        
     </Grid>
 </Window>

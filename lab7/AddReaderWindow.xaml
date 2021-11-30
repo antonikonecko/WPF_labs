@@ -5,21 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab7"
         mc:Ignorable="d"
-        Title="AddReaderWindow" Background ="Gray" Height="450" Width="800">
+        Title="AddReaderWindow" Background ="Gray" Height="300" Width="500">
     <Grid>
-        <TextBox x:Name = "TextBoxImie" HorizontalAlignment="Left" Margin="167,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MinWidth="50" MaxWidth="100" MaxHeight="20"  />
-        <TextBlock HorizontalAlignment="Left" Margin="77,85,0,0" TextWrapping="Wrap" Text="Imie" VerticalAlignment="Top"/>
-        <TextBox x:Name = "TextBoxNazwisko" HorizontalAlignment="Left" Margin="167,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MinWidth="50" MaxWidth="100" MaxHeight="20"  />
-        <TextBlock HorizontalAlignment="Left" Margin="77,123,0,0" TextWrapping="Wrap" Text="Nazwisko" VerticalAlignment="Top"/>
-        <TextBox x:Name = "TextBoxID" HorizontalAlignment="Left" Margin="167,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MinWidth="50" MaxWidth="100" MaxHeight="20"  />
-        <TextBlock HorizontalAlignment="Left" Margin="77,166,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top"/>
-       
+        <TextBox x:Name = "TextBoxImie" HorizontalAlignment="Left" Margin="256,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MinWidth="100" MaxWidth="150" MaxHeight="40"  />
+        <TextBlock HorizontalAlignment="Left" Margin="166,69,0,0" TextWrapping="Wrap" Text="Imie" VerticalAlignment="Top"/>
+        <TextBox x:Name = "TextBoxNazwisko" HorizontalAlignment="Left" Margin="256,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MinWidth="100" MaxWidth="150" MaxHeight="40"  />
+        <TextBlock HorizontalAlignment="Left" Margin="166,107,0,0" TextWrapping="Wrap" Text="Nazwisko" VerticalAlignment="Top"/>
+
         <Button x:Name="AddReaderBtn"
                 Click="AddReaderBtn_Click"
                 Content="Dodaj czytelnika" 
                 HorizontalAlignment="Left" 
-                Margin="288,115,0,0" 
+                Margin="166,161,0,0" 
                 VerticalAlignment="Top" 
-                Height="80" Width="134"  />
+                Height="53" Width="190"  />
     </Grid>
 </Window>

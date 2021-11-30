@@ -32,7 +32,7 @@ namespace lab7
 
         private bool TextNotEmpty()
         {
-            if (TextBoxTytul.Text !="" && TextBoxAutor.Text !="" && TextBoxID.Text != "" )
+            if (TextBoxTytul.Text !="" && TextBoxAutor.Text !="" )
             {
                 return true;
             }
@@ -48,12 +48,12 @@ namespace lab7
                 {
                     Tytul = TextBoxTytul.Text,
                     Autor = TextBoxAutor.Text,
-                    KsiazkaID = TextBoxID.Text,//Guid.NewGuid().ToString(),
+                    KsiazkaID = ((MainWindow)this.Owner).GuidEncodeBase64(),
                     Wypozyczona = ""                        
                 });
                 TextBoxTytul.Text = "";
                 TextBoxAutor.Text = "";
-                TextBoxID.Text = "";
+                
             }            
             
         }

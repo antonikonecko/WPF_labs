@@ -45,5 +45,16 @@ namespace lab7
             }
             this.Close();
         }
+
+        private void cbox_wypozyczone_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (Ksiazka ks in ((MainWindow)this.Owner).ksiazkaCollection)
+            {
+                if (ks.Wypozyczona != "" && ks.KsiazkaID == (string)cbox_wypozyczone.SelectedValue)
+                {
+                    ((MainWindow)this.Owner).dgKsiazki.SelectedItem = ks;
+                }
+            }
+        }
     }
 }

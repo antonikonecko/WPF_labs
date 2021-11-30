@@ -48,10 +48,35 @@ namespace lab7
             {
                 if(ks.Wypozyczona == "" && ks.KsiazkaID == (string)cbox_ksiazka.SelectedValue) 
                 { 
-                    ks.Wypozyczona = (string)cbox_czytelnik.SelectedValue;                    
+                    ks.Wypozyczona = (string)cbox_czytelnik.SelectedValue;
+                    //((MainWindow)this.Owner).dgKsiazki.SelectedItem = ks;
                 }
             }
             this.Close();
+        }
+
+        private void cbox_ksiazka_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (Ksiazka ks in ((MainWindow)this.Owner).ksiazkaCollection)
+            {
+                if (ks.Wypozyczona == "" && ks.KsiazkaID == (string)cbox_ksiazka.SelectedValue)
+                {                    
+                    ((MainWindow)this.Owner).dgKsiazki.SelectedItem = ks;
+                    
+                }
+            }
+        }
+
+        private void cbox_czytelnik_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (Czytelnik cz in ((MainWindow)this.Owner).czytelnikCollection)
+            {
+                if ( cz.CzytelnikID == (string)cbox_czytelnik.SelectedValue)
+                {
+                    ((MainWindow)this.Owner).dgCzytelnicy.SelectedItem = cz;
+
+                }
+            }
         }
     }
 }
