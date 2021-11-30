@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab7"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Closing="Window_Closing">
     <Window.Resources>
         <CollectionViewSource x:Key="KsiazkaCollectionViewSource"   CollectionViewType="ListCollectionView"/>
         <CollectionViewSource x:Key="CzytelnikCollectionViewSource" CollectionViewType="ListCollectionView"/>
@@ -35,7 +36,7 @@
             <RowDefinition Height = "0.8*"/>
             <RowDefinition Height = "0.3*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name = "lvCzytelnicy"
+        <DataGrid x:Name = "dgCzytelnicy"
                   DataContext="{StaticResource CzytelnikCollectionViewSource}"
                   ItemsSource="{Binding}"
                   CanUserAddRows="False"
@@ -49,9 +50,9 @@
                 <DataGridTextColumn x:Name = "ColCzytelnikID" Header="ID"       Binding = "{Binding Path=CzytelnikID}" />
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name = "lvKsiazki"                  
-                  DataContext="{StaticResource KsiazkaCollectionViewSource}"
-                  ItemsSource="{Binding}"
+        <DataGrid x:Name = "dgKsiazki"                  
+                  DataContext="{StaticResource KsiazkaCollectionViewSource}"                  
+                  ItemsSource="{Binding}"                  
                   CanUserAddRows="False"
                   AutoGenerateColumns="False"
                   FontSize="14"    Background = "LightGray" 
@@ -61,9 +62,8 @@
                 <DataGridTextColumn     x:Name = "ColTytul"       Header="Tytul"       Binding = "{Binding Path=Tytul}" />
                 <DataGridTextColumn     x:Name = "ColAutor"       Header="Autor"       Binding = "{Binding Path=Autor}" />
                 <DataGridTextColumn     x:Name = "ColKsiazkaID"   Header="ID"          Binding = "{Binding Path=KsiazkaID}" />
-                <DataGridCheckBoxColumn x:Name = "ColWypozyczona" Header="Wypozyczona" Binding = "{Binding Path=Wypozyczona}" />
+                <DataGridTextColumn     x:Name = "ColWypozyczona" Header="Wypozyczona" Binding = "{Binding Path=Wypozyczona}" />
             </DataGrid.Columns>
-
         </DataGrid>        
         <Button Grid.Row="2" Grid.Column = "5" x:Name = "WypozyczBtn"        Content = "Wypozycz"         Click="WypozyczBtn_Click" />
         <Button Grid.Row="4" Grid.Column = "5" x:Name = "OddajBtn"           Content = "Oddaj"            Click="OddajBtn_Click"  />

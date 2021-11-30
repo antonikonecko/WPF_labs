@@ -1,0 +1,28 @@
+﻿<Window x:Class="lab7.WypozyczWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab7"
+        mc:Ignorable="d"
+        Title="WypozyczWindow" Background ="Gray" Height="301" Width="509">
+    <Grid>
+        <Button x:Name="WypozyczBtn"
+                Click="WypozyczBtn_Click"
+                Content="Wypozycz ksiązkę" 
+                HorizontalAlignment="Left" 
+                Margin="288,115,0,0" 
+                VerticalAlignment="Top" 
+                Height="80" Width="134"  />
+        <ComboBox x:Name="cbox_ksiazka"                  
+                  HorizontalAlignment="Left" Margin="97,115,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cbox_czytelnik"            
+            HorizontalAlignment="Left" Margin="97,173,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock TextAlignment="Center"
+            HorizontalAlignment="Left" Margin="97,147,0,0" TextWrapping="Wrap"
+                   VerticalAlignment="Top" Width="120" FontWeight="Bold" FontSize="16"><Run Language="pl-pl" Text="ID czytelnika"/></TextBlock>
+        <TextBlock TextAlignment="Center"
+            HorizontalAlignment="Left" Margin="97,88,0,0" TextWrapping="Wrap"
+                   VerticalAlignment="Top" Width="120" FontWeight="Bold" FontSize="16"><Run Language="pl-pl" Text="ID ksiazki"/></TextBlock>
+    </Grid>
+</Window>
