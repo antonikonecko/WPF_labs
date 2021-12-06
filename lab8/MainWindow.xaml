@@ -1,0 +1,35 @@
+﻿<Window x:Class="lab8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab8"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ListBox x:Name="listbox"
+                 
+                 Width="Auto"
+                 Margin="23,50,258,100"/>
+        <CheckBox x:Name="cb_ICAO"
+                  Checked="cb_ICAO_Checked"
+                  Content="Kod lotniska ICAO" HorizontalAlignment="Left" Margin="624,144,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cb_IATA"
+                  Checked="cb_IATA_Checked"
+                  Content="Kod lotniska IATA" HorizontalAlignment="Left" Margin="624,164,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cb_pasazerowie"
+                  Checked="cb_pasazerowie_Checked"
+                  Content="Liczba pasażerów" HorizontalAlignment="Left" Margin="624,184,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cb_wojewodztwo"
+                  Checked="cb_wojewodztwo_Checked"
+                  Content="Województwo" HorizontalAlignment="Left" Margin="624,204,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cb_miasto"
+                  Checked="cb_miasto_Checked"
+                  Content="Miasto" HorizontalAlignment="Left" Margin="624,224,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_szczegoly" 
+                Click="btn_szczegoly_Click"
+                Content="Szczegóły" HorizontalAlignment="Left" Margin="623,279,0,0" VerticalAlignment="Top" Height="50" Width="85"/>
+        <Rectangle 
+                HorizontalAlignment="Left" Height="106" Margin="615,139,0,0" Stroke="Black" VerticalAlignment="Top" Width="153"/>
+    </Grid>
+</Window>
