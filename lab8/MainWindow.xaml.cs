@@ -39,8 +39,7 @@ namespace lab8
     public partial class MainWindow : Window
     {
         public IEnumerable<Lotnisko> Lotniska { get; set; }
-        List<Lotnisko> lista_lotnisk = new ();       
-        List <CheckBox> checked_checkbox_list = new List<CheckBox>();
+        List<Lotnisko> lista_lotnisk = new ();
 
         public MainWindow()
         {
