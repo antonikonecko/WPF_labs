@@ -1,5 +1,4 @@
 ﻿using CsvHelper;
-using CsvHelper.Configuration;
 using CsvHelper.Configuration.Attributes;
 using System;
 using System.Collections.Generic;
@@ -7,16 +6,9 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace lab8
 {
@@ -46,12 +38,14 @@ namespace lab8
     
     public partial class MainWindow : Window
     {
-        public IEnumerable<Lotnisko> Lotniska;
-        List<Lotnisko> lista_lotnisk = new ();
+        public IEnumerable<Lotnisko> Lotniska { get; set; }
+        List<Lotnisko> lista_lotnisk = new ();       
+        List <CheckBox> checked_checkbox_list = new List<CheckBox>();
+
         public MainWindow()
         {
-            InitializeComponent();          
-
+            InitializeComponent();
+                       
             string path = System.IO.Path.GetFullPath(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\data\\Test_Data.csv"));            
             using (var reader = new StreamReader(path, Encoding.UTF8))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
@@ -59,42 +53,40 @@ namespace lab8
                 Lotniska = csv.GetRecords<Lotnisko>();
                 lista_lotnisk = Lotniska.ToList();
             }
-            foreach (var l in lista_lotnisk)
-            {
-                listbox.Items.Add(l.nazwa);
-            }                     
-                        
-        }             
+            listbox.ItemsSource = lista_lotnisk;           
+        }
 
 
         private void btn_szczegoly_Click(object sender, RoutedEventArgs e)
         {
-            Details details = new();
-            details.ShowDialog();
-        }
-
-        private void cb_miasto_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void cb_wojewodztwo_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void cb_pasazerowie_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void cb_IATA_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void cb_ICAO_Checked(object sender, RoutedEventArgs e)
-        {
+            if (listbox.SelectedIndex == -1 )
+                MessageBox.Show("Nie wybrano lotniska!");
+            else if (listbox.SelectedIndex > -1)
+            {
+                List<string> checkedCheckboxes = new();
+                foreach (CheckBox checkbox in this.grid.Children.OfType<CheckBox>())
+                {
+                    if (checkbox.IsChecked == false)
+                    {
+                        if (checkedCheckboxes.Any())
+                        {
+                            foreach (string item in checkedCheckboxes)
+                            {
+                                if (item.Contains(checkbox.Name))
+                                    checkedCheckboxes.Remove(item);
+                            }
+                        }
+                    }
+                    else if (checkbox.IsChecked == true) 
+                    {
+                        checkedCheckboxes.Add(checkbox.Name);                        
+                    }
+                    
+                }               
+                Details details = new(checkedCheckboxes, (Lotnisko)listbox.SelectedItem);
+                details.ShowDialog();
+                checkedCheckboxes.Clear();
+            }                      
 
         }
     }

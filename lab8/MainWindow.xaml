@@ -6,25 +6,26 @@
         xmlns:local="clr-namespace:lab8"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <ListBox x:Name="listbox"
-                 
+    <Grid x:Name="grid">
+        
+        <ListBox x:Name="listbox"                
+                 DisplayMemberPath="nazwa"
                  Width="Auto"
-                 Margin="23,50,258,100"/>
+                 Margin="23,50,258,100"/>       
         <CheckBox x:Name="cb_ICAO"
-                  Checked="cb_ICAO_Checked"
+                   
                   Content="Kod lotniska ICAO" HorizontalAlignment="Left" Margin="624,144,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="cb_IATA"
-                  Checked="cb_IATA_Checked"
+                   
                   Content="Kod lotniska IATA" HorizontalAlignment="Left" Margin="624,164,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="cb_pasazerowie"
-                  Checked="cb_pasazerowie_Checked"
+                   
                   Content="Liczba pasażerów" HorizontalAlignment="Left" Margin="624,184,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="cb_wojewodztwo"
-                  Checked="cb_wojewodztwo_Checked"
+                   
                   Content="Województwo" HorizontalAlignment="Left" Margin="624,204,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="cb_miasto"
-                  Checked="cb_miasto_Checked"
+                   
                   Content="Miasto" HorizontalAlignment="Left" Margin="624,224,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btn_szczegoly" 
                 Click="btn_szczegoly_Click"
