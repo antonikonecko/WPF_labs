@@ -1,0 +1,42 @@
+﻿<Window x:Class="lab9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab9"
+        mc:Ignorable="d"
+        Title="Karta pracy dyplomowej licencjackiej" Height="800" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "*"/>
+            <ColumnDefinition Width = "*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "100"/>
+            <RowDefinition Height = "*"/>
+            <RowDefinition Height = "*"/>
+            <RowDefinition Height = "*"/>
+            <RowDefinition Height = "*"/>
+            <RowDefinition Height = "*"/>
+            <RowDefinition Height = "*"/>
+            <RowDefinition Height = "*"/>
+            <RowDefinition Height = "*"/>
+            <RowDefinition Height = "*"/>
+            <RowDefinition Height = "*"/>
+            <RowDefinition Height = "*"/>
+        </Grid.RowDefinitions>
+        <Image Width="100"  HorizontalAlignment="Left" Margin="20,2,2,2" >
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="400" UriSource="C:\Users\Antek\Documents\Visual Studio 2019\PO\lab9\putLogoColor.png"></BitmapImage>
+            </Image.Source>
+        </Image>
+        <Label 
+            HorizontalContentAlignment="Left"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top" Margin="100,20,0,0">
+            <Label.Content>
+                <AccessText TextWrapping="Wrap" Text="Karta &#xD;&#xA;pracy dyplomowej licencjackiej" FontSize="14"/>
+            </Label.Content>
+        </Label>
+    </Grid>
+</Window>
