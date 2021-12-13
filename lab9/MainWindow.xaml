@@ -5,7 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab9"
         mc:Ignorable="d"
-        Title="Karta pracy dyplomowej licencjackiej" Height="800" Width="800">
+        Title="Karta pracy dyplomowej licencjackiej" Height="600" Width="800">
+    <Window.Resources>
+        <Style x:Key="CenterGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="LightGray"/>
+        </Style>
+        <Style x:Key="FirstColumnGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Width" Value="120"/>
+        </Style>
+       
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width = "*"/>
@@ -14,20 +25,16 @@
         <Grid.RowDefinitions>
             <RowDefinition Height = "100"/>
             <RowDefinition Height = "*"/>
+            <RowDefinition Height = "1.5*"/>
             <RowDefinition Height = "*"/>
             <RowDefinition Height = "*"/>
             <RowDefinition Height = "*"/>
-            <RowDefinition Height = "*"/>
-            <RowDefinition Height = "*"/>
-            <RowDefinition Height = "*"/>
-            <RowDefinition Height = "*"/>
-            <RowDefinition Height = "*"/>
-            <RowDefinition Height = "*"/>
-            <RowDefinition Height = "*"/>
+            <RowDefinition Height = "0.2*"/>
         </Grid.RowDefinitions>
         <Image Width="100"  HorizontalAlignment="Left" Margin="20,2,2,2" >
             <Image.Source>
-                <BitmapImage DecodePixelWidth="400" UriSource="C:\Users\Antek\Documents\Visual Studio 2019\PO\lab9\putLogoColor.png"></BitmapImage>
+                <BitmapImage DecodePixelWidth="100" UriSource="/putLogoColor.png" ></BitmapImage>  
+                
             </Image.Source>
         </Image>
         <Label 
@@ -38,5 +45,103 @@
                 <AccessText TextWrapping="Wrap" Text="Karta &#xD;&#xA;pracy dyplomowej licencjackiej" FontSize="14"/>
             </Label.Content>
         </Label>
+        <DataGrid x:Name="DG_University"
+                  HeadersVisibility="All"
+                  Grid.Column="0"
+                  Grid.Row="1">
+            <DataGrid.RowHeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding DataContext.YourProperty}"></TextBlock>
+                </DataTemplate>
+            </DataGrid.RowHeaderTemplate>
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name = "Col1_DG_University" 
+                                    HeaderStyle="{StaticResource FirstColumnGridHeaderStyle}"
+                                    Header="" />
+
+                <DataGridTextColumn x:Name = "Col2_DG_University" Binding = "{Binding Path=bindingpath}"
+                                    HeaderStyle="{StaticResource CenterGridHeaderStyle}"
+                                    Header="" 
+                                    Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="DG_Study_Profile"
+                  Grid.Row="1" Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name = "Col1_DG_Study_Profile" 
+                                    HeaderStyle="{StaticResource FirstColumnGridHeaderStyle}"
+                                    Header=""/>
+                <DataGridTextColumn x:Name = "Col2_DG_Study_Profile" Binding = "{Binding Path=bindingpath}"
+                                    HeaderStyle="{StaticResource CenterGridHeaderStyle}"
+                                    Header="" 
+                                    Width="2.5*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Grid.Row="2"  Grid.ColumnSpan="2"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Center"
+                   Margin="5">
+            Zobowiązuję/zobowiązujemy się samodzielnie wykonać pracę w zakresie wyspecyfikowanym niżej. Wszystkie elementy (m.in. rysunki, tabele, cytaty, programy
+komputerowe, urządzenia itp.), które zostaną wykorzystane w pracy, a nie będą mojego/naszego autorstwa będą w odpowiedni sposób zaznaczone i będzie podane źródło
+ich pochodzenia.
+Jeżeli w wyniku realizacji pracy zostanie dokonany wynalazek, wzór użytkowy, wzór przemysłowy, znak towarowy, prawa do rozwiązań przysługiwać będą Politechnice
+Poznańskiej. Prawo to zostanie uregulowane odrębną umową.
+Oświadczam, iż o wyniku prac wskazanych powyżej, a także o innych, w tym tych, które mogą być przedmiotem tajemnicy Politechniki Poznańskiej, niezwłocznie
+powiadomię promotora pracy.
+Zobowiązuję się ponadto do zachowania w tajemnicy wszystkich informacji technicznych, technologicznych, organizacyjnych, uzyskanych w Politechnice Poznańskiej
+w okresie od daty rozpoczęcia realizacji prac do 5 lat od daty zakończenia wykonania prac.
+        </TextBlock>
+        <DataGrid x:Name="DG_Students_Data"
+            Grid.Row="3" Grid.ColumnSpan="2">
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="NavajoWhite"/>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name = "Col1" 
+                                    HeaderStyle="{StaticResource FirstColumnGridHeaderStyle}"
+                                    Header=""/>
+                <DataGridTextColumn x:Name = "ColImieNazwisko" Binding = "{Binding Path=ImieNazwisko}"
+                                    HeaderStyle="{StaticResource CenterGridHeaderStyle}"
+                                    Header="Imie i Nazwisko" 
+                                    Width="*"/>
+                <DataGridTextColumn x:Name = "ColNrAlbumu"     Binding = "{Binding Path=NrAlbumu}"
+                                    Header="Nr albumu"
+                                    HeaderStyle="{StaticResource CenterGridHeaderStyle}"
+                                    Width="*"/>
+                <DataGridTextColumn x:Name = "ColDataPodpis"   Binding = "{Binding Path=Data}" 
+                                    HeaderStyle="{StaticResource CenterGridHeaderStyle}"
+                                    Header="Data i podpis"                                       
+                                    Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="DG_Thesis"
+            Grid.Row="4" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name = "Col1_DG_Thesis" 
+                                    HeaderStyle="{StaticResource FirstColumnGridHeaderStyle}"
+                                    Header=""/>
+                <DataGridTextColumn x:Name = "Col2_DG_Thesis" Binding = "{Binding Path=bindingpath}"
+                                    HeaderStyle="{StaticResource CenterGridHeaderStyle}"
+                                    Header="" 
+                                    Width="*"/>
+            </DataGrid.Columns>
+            
+
+        </DataGrid>
+        <TextBlock Grid.Row="5"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap">
+            Podpis dyrektora/kierownika jednostki organizacyjnej promotora
+        </TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="1"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap"
+                   >
+            Data i podpis Dziekana
+         </TextBlock>
+        
+
     </Grid>
 </Window>

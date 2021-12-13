@@ -7,4 +7,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="putLogoColor.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="putLogoColor.png" />
+  </ItemGroup>
+
 </Project>
