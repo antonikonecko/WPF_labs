@@ -1,13 +1,21 @@
 ﻿using lab9;
+using Microsoft.Win32;
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Data;
+using System.Configuration;
+using System.IO;
 using System.Windows;
+using System.Xml.Serialization;
 
 namespace lab9
 {
+    public class Container
+    {
+        public Studies Studies { get; set; }
+        public ObservableCollection<Student> Students_List  { get; set; }
+        public Thesis Thesis   { get; set; }
+    }
     public class Studies : INotifyPropertyChanged
     {
         private string _University;
@@ -86,8 +94,8 @@ namespace lab9
                 _Study_Level = value;
                 OnPropertyChanged(nameof(Study_Level));
             }
-        }        
-       
+        }     
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {           
@@ -101,7 +109,7 @@ namespace lab9
         }
     }
 
-    public class Student
+    public class Student : INotifyPropertyChanged
     {
         public static string St
         {
@@ -110,13 +118,84 @@ namespace lab9
                 return "Student";
             }           
         }
-        public string Student_Name { get; set; }
-        public string Id { get; set; }
-        public DateTime  Date { get; set; }
-        public string Date_Signature { get; set; }
-        public string Signature { get; set; }
+        private string _Student_Name;
+        private string _Id;
+        private DateTime _Date;
+        private string _Signature;
+        private string _Date_Signature;
         
+        public string Student_Name
+        {
+            get
+            {
+                return _Student_Name;
+            }
+            set
+            {
+                _Student_Name = value;
+                OnPropertyChanged(nameof(Student_Name));
+            }
+        }
+        public string Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                _Id = value;
+                OnPropertyChanged(nameof(Id));
+            }
+        }
+        public DateTime Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                _Date = value;
+                OnPropertyChanged(nameof(Date));
+            }
+        }
+        public string Signature
+        {
+            get
+            {
+                return _Signature;
+            }
+            set
+            {
+                _Signature = value;
+                OnPropertyChanged(nameof(Signature));
+            }
+        }
+        public string Date_Signature
+        {
+            get
+            {
+                return _Date_Signature;
+            }
+            set
+            {
+                _Date_Signature = value;
+                OnPropertyChanged(nameof(Date_Signature));
+            }
+        }      
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = this.PropertyChanged;
+            if (handler != null)
+            {
+                var e = new PropertyChangedEventArgs(propertyName);
+                handler(this, e);
+                MessageBox.Show("Property changed", "Debug", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
     }
 
     public class Thesis : INotifyPropertyChanged
@@ -228,24 +307,111 @@ namespace lab9
 
 
     public partial class MainWindow : Window
-    {        
-        public Studies studies { get; set; }
-        public Thesis thesis { get; set; }
-        public List<Student> Students_list { get; set; }       
-        
+    {
+        public Studies The_studies { get; set; }
+        public Thesis The_thesis { get; set; }
+        public ObservableCollection<Student> Students_Collection { get; set; }
+        public Container Container { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();            
-            this.DataContext = this;
-            studies = new();            
-            thesis = new();            
-            Students_list = new();   
-            //Students_list.Add(new Student() { Student_Name = "Fernando Alonso", Id = "14", Date = DateTime.Today });
-            //Students_list.Add(new Student() { Student_Name = "Max Verstappen",  Id = "33", Date = DateTime.Today });
-            //Students_list.Add(new Student() { Student_Name = "Lewis Hamilton",  Id = "44", Date = DateTime.Today });            
-            DG_Students_Data.ItemsSource=Students_list;
-            DG_Students_Data.Items.Refresh();       
+            this.DataContext = this;          
             
-        }  
+            The_studies = new();
+            The_thesis = new();
+            Students_Collection = new();
+
+            MessageBoxResult result = MessageBox.Show("Wczytać zapisaną sesję?", "Witaj", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes) { RestoreSession(); }
+        }        
+
+        private void RestoreSession()
+        {
+            string default_File;           
+            default_File = ConfigurationManager.AppSettings.Get("recent_data");
+            if (File.Exists(default_File) && default_File != "") 
+            {
+                importXml(default_File);                
+            }
+            else { MessageBox.Show("Pliki nie istnieją"); }
+        }
+
+        private void importXml(string inputfile)
+        {
+            using (var reader = new StreamReader(inputfile))
+            {
+                Container = new();
+                XmlSerializer deserializer = new XmlSerializer(Container.GetType());                
+                Container = (Container)deserializer.Deserialize(reader);                              
+            }
+            if(Container != null)
+            {
+                The_studies = Container.Studies;
+                The_thesis = Container.Thesis;
+                Students_Collection = Container.Students_List;
+                MessageBox.Show(Container.Thesis.PL_Title);
+                MessageBox.Show(Container.Studies.Subject);
+                MessageBox.Show(Container.Students_List[0].Student_Name);
+                AddUpdateAppSettings("recent_data", inputfile);
+            }
+           
+        }
+
+        static void AddUpdateAppSettings(string key, string value)
+        {
+            try
+            {
+                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                var settings = configFile.AppSettings.Settings;
+                if (settings[key] == null)
+                {
+                    settings.Add(key, value);
+                }
+                else
+                {
+                    settings[key].Value = value;
+                }
+                configFile.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+            }
+            catch (ConfigurationErrorsException)
+            {
+                Console.WriteLine("Error writing app settings");
+            }
+        }
+        public void SaveXml(Container data)
+        {
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+            if (savefile.ShowDialog() ?? true)
+            {
+                XmlSerializer serializer = new XmlSerializer(data.GetType());             
+                string filename = savefile.FileName;              
+                using (Stream s = File.Create(filename))
+                {
+                    serializer.Serialize(s, data);
+                }               
+                AddUpdateAppSettings("recent_data", filename);                
+                MessageBox.Show(filename, "Zapisano:");
+            }
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Zapisać dane?", "Zamykanie", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes) 
+            {
+                Container = new();
+                Container.Thesis = The_thesis;
+                Container.Studies = The_studies;
+                Container.Students_List = Students_Collection;
+                MessageBox.Show(Container.Thesis.PL_Title);
+                MessageBox.Show(Container.Studies.Subject);
+                MessageBox.Show(Container.Students_List[0].Student_Name);
+
+                SaveXml(Container); 
+            }
+        }
     }
 }
