@@ -16,9 +16,8 @@ namespace lab11
         string b64_encrypted_data;        
         byte[] aes_iv;
         int myIterations = 1000000;
-        byte[] salt2;
-        Rfc2898DeriveBytes PBKDF2_key;
-        
+        byte[] salt2;       
+
         public MainWindow()
         {
             InitializeComponent();
@@ -37,10 +36,10 @@ namespace lab11
                     // Fill the array with a random value.
                     rng.GetBytes(salt);
                 }
-                
-                PBKDF2_key = new(password, salt, myIterations);                
                 salt2 = salt;
-
+                Rfc2898DeriveBytes PBKDF2_key = new(password, salt, myIterations);                
+                            
+                
                 // Encrypt the data.
                 Aes encAlg = Aes.Create();
                 encAlg.Key = PBKDF2_key.GetBytes(32);                
@@ -82,7 +81,7 @@ namespace lab11
             else
             {
                 Rfc2898DeriveBytes PBKDF2_key2 = new(pb_password.Password, salt2, myIterations);
-                
+               
                 pb_password.Clear();
                 Aes decAlg = Aes.Create();
                 decAlg.IV = aes_iv;
