@@ -5,20 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lab12"
         mc:Ignorable="d"
-        Title="Catcher"  Height="220" Width="300">
+        Title="Catcher"  Height="220" Width="300"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <ComboBox x:Name="cb_Animal"                  
                   HorizontalAlignment="Left" Margin="94,41,0,0" VerticalAlignment="Top" Width="120" Height="25">
                 <ComboBoxItem Name="Mouse">Mouse</ComboBoxItem>
                 <ComboBoxItem Name="Fish">Fish</ComboBoxItem>
                 <ComboBoxItem Name="Cat">Cat</ComboBoxItem>
-                <ComboBoxItem Name="Croc">Croc</ComboBoxItem>
+                <ComboBoxItem Name="Croc">Croco</ComboBoxItem>
         </ComboBox>
         <ComboBox x:Name="cb_Level"                  
                   HorizontalAlignment="Left" Margin="94,87,0,0" VerticalAlignment="Top" Width="120" Height="25">
-            <ComboBoxItem Name="Ease">Easy</ComboBoxItem>
-            <ComboBoxItem Name="Normal">Normal</ComboBoxItem>
-            <ComboBoxItem Name="Hard">Hard</ComboBoxItem>          
+            <ComboBoxItem Name="Ease">Easy (3x3)</ComboBoxItem>
+            <ComboBoxItem Name="Normal">Normal (4x4)</ComboBoxItem>
+            <ComboBoxItem Name="Hard">Hard (5x5)</ComboBoxItem>          
         </ComboBox>
         <Button x:Name="btn_Start" Click="btn_Start_Click" Content="Start" HorizontalAlignment="Left" Margin="94,127,0,0" VerticalAlignment="Top" Width="120" Height="25"/>
         <Label Content="Animal" HorizontalAlignment="Left" Margin="131,20,0,0" VerticalAlignment="Top"/>
