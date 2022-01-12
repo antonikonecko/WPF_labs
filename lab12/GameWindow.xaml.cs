@@ -92,30 +92,8 @@ namespace lab12
         }
 
         void timer_Tick(object sender, EventArgs e)
-        {
-            if (lucky_btn_clicked == true && CrocoBool() && animal == "Croco")
-            {
-                timer.Stop();
-                ResultWindow resultWindow = new ResultWindow();
-                resultWindow.Owner = this;
-                resultWindow.label.Content = "You caught Croco! But it killed You!";
-                resultWindow.btn_return.Margin = new Thickness(0, 25, 0, 0);
-                resultWindow.btn_again.Visibility = Visibility.Collapsed;
-                resultWindow.ShowDialog();                
-            }               
-
-            else if (lucky_btn_clicked == true)
-            {
-                timer.Stop();
-                ResultWindow resultWindow = new ResultWindow();
-                resultWindow.Owner = this;
-                resultWindow.label.Content = $"You caught {animal}!";
-                resultWindow.btn_return.Margin = new Thickness(0, 25, 0, 0);
-                resultWindow.btn_again.Visibility = Visibility.Collapsed;
-                resultWindow.ShowDialog();                
-            }
-
-            else
+        {          
+            if(lucky_btn_clicked == false)
             {
                 timer.Stop();
                 ResultWindow resultWindow = new ResultWindow();
@@ -131,7 +109,6 @@ namespace lab12
 
         private void Lucky_button_Click(object sender, EventArgs e)
         {
-
             string img_path = "images/" + animal + ".png";
             BitmapImage bitimg = new BitmapImage();
             bitimg.BeginInit();
@@ -143,6 +120,26 @@ namespace lab12
                       
             btn_list[luckyButton].Background = new ImageBrush(bitimg);            
             lucky_btn_clicked = true;
+
+            if (CrocoBool() && animal == "Croco")
+            {                
+                ResultWindow resultWindow = new ResultWindow();
+                resultWindow.Owner = this;
+                resultWindow.label.Content = "You caught Croco! But it killed You!";
+                resultWindow.btn_return.Margin = new Thickness(0, 25, 0, 0);
+                resultWindow.btn_again.Visibility = Visibility.Collapsed;
+                resultWindow.ShowDialog();
+            }
+
+            else 
+            {                
+                ResultWindow resultWindow = new ResultWindow();
+                resultWindow.Owner = this;
+                resultWindow.label.Content = $"You caught {animal}!";
+                resultWindow.btn_return.Margin = new Thickness(0, 25, 0, 0);
+                resultWindow.btn_again.Visibility = Visibility.Collapsed;
+                resultWindow.ShowDialog();
+            }
         }
         private void Empty_Button_Click(object sender, EventArgs e)
         {
