@@ -18,7 +18,7 @@ namespace lab12
 
         private void btn_again_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Close();            
             ((GameWindow)this.Owner).timer.Start();
         }
     }

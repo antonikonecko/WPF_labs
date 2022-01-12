@@ -14,10 +14,18 @@ namespace lab12
         
         private void btn_Start_Click(object sender, RoutedEventArgs e)
         {            
-            int level = cb_Level.SelectedIndex + 3;            
+            int level = cb_Level.SelectedIndex;            
             string animal = cb_Animal.Text;
-            GameWindow gameWindow = new(level, animal);
-            gameWindow.Show();     
+            if (animal != string.Empty && level != -1)
+            {
+                GameWindow gameWindow = new(level + 3, animal);
+                gameWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Select animal and level!", "Error!");
+            }
+
         }        
     }
 }
