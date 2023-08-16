@@ -1,6 +1,6 @@
-#  [Project 3 ](../lab3/README.md) Modification
+#  [Project 3 ](../lab3/) Modification
 
-## This project involves modifying the code from [Project 3 ](../lab3/README.md) to implement the following changes:
+## This project involves modifying the code from [Project 3 ](../lab3/) to implement the following changes:
 
 1. Modified the file writing process to utilize XML serialization for data storage.
 2. Implemented data loading through XML deserialization.
