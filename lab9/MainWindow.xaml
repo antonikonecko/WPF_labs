@@ -1,0 +1,168 @@
+﻿<Window x:Class="lab9.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab9"
+        mc:Ignorable="d"
+        Title="Karta pracy dyplomowej licencjackiej" Height="Auto" Width="900"
+        Closing="Window_Closing">
+    <Window.Resources>
+        <Style x:Key="CenterGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="LightGray"/>
+        </Style>
+        <Style x:Key="FirstColumnGridHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Width" Value="120"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "*"/>
+            <ColumnDefinition Width = "*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "100"/>
+            <RowDefinition Height = "88"/>
+            <RowDefinition Height = "125"/>
+            <RowDefinition Height = "120"/>
+            <RowDefinition Height = "280"/>
+            <RowDefinition Height = "100"/>
+
+        </Grid.RowDefinitions>
+        <Image Width="100"  HorizontalAlignment="Left" Margin="20,2,2,2" >
+            <Image.Source>
+                <BitmapImage DecodePixelWidth="100" UriSource="/putLogoColor.png" ></BitmapImage>
+            </Image.Source>
+        </Image>
+        <Label 
+            HorizontalContentAlignment="Left"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top" Margin="100,20,0,0">
+            <Label.Content>
+                <AccessText TextWrapping="Wrap" Text="Karta &#xD;&#xA;pracy dyplomowej licencjackiej" FontSize="14"/>
+            </Label.Content>
+        </Label>
+        <Label Content="Uczelnia:" HorizontalAlignment="Left" Margin="20,2,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Kierunek:" HorizontalAlignment="Left" Margin="20,29,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Studia w zakresie:" HorizontalAlignment="Left" Margin="20,56,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="TB_University"
+                 Text="Politechnika Poznańska"
+                 IsReadOnly="True"
+                 HorizontalAlignment="Left" Margin="130,6,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" />
+        <TextBox x:Name="TB_Subject"                
+                 Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=The_studies.Subject}"
+                 HorizontalAlignment="Left" Margin="130,0,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="241"/>
+        <TextBox x:Name="TB_Field"
+                 Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=The_studies.Study_Field}"
+                 HorizontalAlignment="Left" Margin="130,62,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="241"/>
+
+        <Label Content="Profil studiów:" HorizontalAlignment="Left" Margin="20,2,0,0" Grid.Row="1"  VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Forma studiów:" HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="1" VerticalAlignment="Center" Grid.Column="1"/>
+        <Label Content="Poziom studiów:" HorizontalAlignment="Left" Margin="20,56,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1"/>
+
+        <TextBox x:Name="TB_Profile"
+                 Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=The_studies.Study_Profile}"
+                 HorizontalAlignment="Left" Margin="121,6,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Grid.Column="1"/>
+        <TextBox x:Name="TB_Form"
+                 Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=The_studies.Study_Form}"
+                 HorizontalAlignment="Left" Margin="121,0,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="241" Grid.Column="1"/>
+        <TextBox x:Name="TB_Level"
+                 Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=The_studies.Study_Level}"
+                 HorizontalAlignment="Left" Margin="121,62,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" Grid.Column="1"/>
+
+        <TextBlock Grid.Row="2"  Grid.ColumnSpan="2"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Center"
+                   Margin="10">
+            Zobowiązuję/zobowiązujemy się samodzielnie wykonać pracę w zakresie wyspecyfikowanym niżej. Wszystkie elementy (m.in. rysunki, tabele, cytaty, programy
+komputerowe, urządzenia itp.), które zostaną wykorzystane w pracy, a nie będą mojego/naszego autorstwa będą w odpowiedni sposób zaznaczone i będzie podane źródło
+ich pochodzenia.
+Jeżeli w wyniku realizacji pracy zostanie dokonany wynalazek, wzór użytkowy, wzór przemysłowy, znak towarowy, prawa do rozwiązań przysługiwać będą Politechnice
+Poznańskiej. Prawo to zostanie uregulowane odrębną umową.
+Oświadczam, iż o wyniku prac wskazanych powyżej, a także o innych, w tym tych, które mogą być przedmiotem tajemnicy Politechniki Poznańskiej, niezwłocznie
+powiadomię promotora pracy.
+Zobowiązuję się ponadto do zachowania w tajemnicy wszystkich informacji technicznych, technologicznych, organizacyjnych, uzyskanych w Politechnice Poznańskiej
+w okresie od daty rozpoczęcia realizacji prac do 5 lat od daty zakończenia wykonania prac.
+        </TextBlock>
+        <DataGrid x:Name="DG_Students_Data"
+                  ItemsSource="{Binding Path=Students_Collection}"
+                  Grid.Row="3" Grid.ColumnSpan="2"
+                  AutoGenerateColumns="False"
+                  HeadersVisibility="Column">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name = "Col1" Binding = "{Binding Path=St}"
+                                    IsReadOnly="True"
+                                    HeaderStyle="{StaticResource FirstColumnGridHeaderStyle}"
+                                    Header=""/>
+                <DataGridTextColumn x:Name = "ColImieNazwisko" Binding = "{Binding Path=Student_Name}"
+                                    HeaderStyle="{StaticResource CenterGridHeaderStyle}"
+                                    Header="Imie i Nazwisko" 
+                                    Width="*"/>
+                <DataGridTextColumn x:Name = "ColNrAlbumu"     Binding = "{Binding Path=Id}"
+                                    Header="Nr albumu"
+                                    HeaderStyle="{StaticResource CenterGridHeaderStyle}"
+                                    Width="*"/>
+                <DataGridTextColumn x:Name = "ColDataPodpis"   Binding = "{Binding Path=Date_Signature}" 
+                                    HeaderStyle="{StaticResource CenterGridHeaderStyle}"
+                                    Header="Data i podpis"                                       
+                                    Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Tytuł pracy:" HorizontalAlignment="Left" Margin="20,3,0,0" Grid.Row="4" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right"/>
+        <Label HorizontalAlignment="Left" Margin="20,30,0,0" Grid.Row="4" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right">
+            <Label.Content>
+                <AccessText TextWrapping="Wrap" Text="Wersja angielska ⠀⠀⠀⠀⠀⠀⠀tytułu:"/>
+            </Label.Content>
+        </Label>
+        <Label Content="Dane wejściowe:" HorizontalAlignment="Left" Margin="20,72,0,0" Grid.Row="4" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right"/>
+        <TextBox Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=The_thesis.PL_Title}"
+                 HorizontalAlignment="Left" Margin="130,7,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="750" Grid.ColumnSpan="2" />
+        <TextBox Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=The_thesis.EN_Title}"
+                 HorizontalAlignment="Left" Margin="130,42,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="750" Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=The_thesis.Input_Data}"
+                 HorizontalAlignment="Left" Margin="130,78,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="750" Grid.ColumnSpan="2"/>
+        <Label Content="Zakres pracy:" HorizontalAlignment="Left" Margin="20,108,0,0" Grid.Row="4" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right"/>
+        <Label HorizontalAlignment="Left" Margin="20,138,0,0" Grid.Row="4" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right">
+            <Label.Content>
+                <AccessText TextWrapping="Wrap" Text="Termin oddania ⠀⠀⠀⠀⠀⠀pracy:"/>
+            </Label.Content>
+        </Label>
+        <Label Content="Promotor:" HorizontalAlignment="Left" Margin="20,187,0,0" Grid.Row="4" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right"/>
+        <TextBox Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=The_thesis.Operating_Range}"
+                 HorizontalAlignment="Left" Margin="130,112,0,0" Grid.Row="4" TextWrapping="Wrap"  VerticalAlignment="Top" Width="750" Grid.ColumnSpan="2" />
+        <DatePicker SelectedDate="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=The_thesis.Deadline}"
+                 HorizontalAlignment="Left" Margin="130,150,0,0" Grid.Row="4"  VerticalAlignment="Top" Width="750" Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=The_thesis.Promoter}"
+                 HorizontalAlignment="Left" Margin="130,193,0,0" Grid.Row="4" TextWrapping="Wrap"  VerticalAlignment="Top" Width="750" Grid.ColumnSpan="2"/>
+        <Label   HorizontalAlignment="Left" Margin="20,218,0,0" Grid.Row="4" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right">
+            <Label.Content>
+                <AccessText TextWrapping="Wrap" Text="⠀⠀⠀⠀Jednostka⠀organizacyjna⠀⠀⠀⠀promotora:"/>
+            </Label.Content>
+        </Label>
+        <TextBox Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=The_thesis.Promoter_Unit}" 
+                 HorizontalAlignment="Left" Margin="130,238,0,0" Grid.Row="4" TextWrapping="Wrap"  VerticalAlignment="Top" Width="750" Grid.ColumnSpan="2" />
+
+
+        <TextBlock Grid.Row="5"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap"
+                   Text="Podpis dyrektora/kierownika jednostki organizacyjnej promotora">
+        </TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="1"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap"
+                   Text="Data i podpis Dziekana">
+        </TextBlock>
+        <TextBox HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="58" 
+                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="58" Margin="192,0,0,0" 
+                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <DatePicker Grid.Column="1" HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" Width="106" Height="42" Margin="80,0,0,0" 
+                    VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+    </Grid>
+</Window>
