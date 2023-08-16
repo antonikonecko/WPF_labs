@@ -1,0 +1,19 @@
+﻿<Window x:Class="lab12.ResultWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab12"
+        mc:Ignorable="d"
+        Title="ResultWindow" Height="200" Width="300"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button x:Name="btn_return"
+                Content="Return" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Center" Click="btn_return_Click" Width="55"/>
+        <Button x:Name="btn_again"
+                Content="Try again!" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Center" Click="btn_again_Click"/>
+
+        <Label x:Name="label" HorizontalAlignment="Center" Margin="0,-50,0,0" VerticalAlignment="Center"/>
+
+    </Grid>
+</Window>
