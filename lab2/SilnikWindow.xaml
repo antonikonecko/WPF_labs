@@ -1,0 +1,35 @@
+﻿<Window x:Class="lab2.SilnikWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab2"
+        mc:Ignorable="d"
+        Title="SilnikWindow" Height="450" Width="800">
+    <Grid>
+
+        <RadioButton x:Name="Benzyna" Content="Benzyna" HorizontalAlignment="Left" Margin="60,37,0,0" VerticalAlignment="Top" Checked="BenzynaRadioButton_Checked" Unchecked="BenzynaRadioButton_Unchecked"/>
+        <RadioButton x:Name="Gaz" Content="Gaz" HorizontalAlignment="Left" Margin="60,57,0,0" VerticalAlignment="Top" Checked="GazRadioButton_Checked" Unchecked="GazRadioButton_Unchecked"/>
+        <RadioButton x:Name="Diesel" Content="Diesel" HorizontalAlignment="Left" Margin="60,77,0,0" VerticalAlignment="Top" Checked="DieselRadioButton_Checked" Unchecked="DieselRadioButton_Unchecked"/>
+        <RadioButton x:Name="Hybryda" Content="Hybryda" HorizontalAlignment="Left" Margin="60,97,0,0" VerticalAlignment="Top" Checked="HybrydaRadioButton_Checked" Unchecked="HybrydaRadioButton_Unchecked"/>
+        <RadioButton x:Name="Elektryk" Content="Elektryk" HorizontalAlignment="Left" Margin="60,117,0,0" VerticalAlignment="Top" Checked="ElektrykRadioButton_Checked" Unchecked="ElektrykRadioButton_Unchecked"/>       
+
+        <ComboBox x:Name="cbx_moc" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="60,231,601,145" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBoxItem IsSelected="True">Wybierz moc:</ComboBoxItem>
+            <ComboBoxItem>180 KM</ComboBoxItem>
+            <ComboBoxItem>220 KM</ComboBoxItem>
+            <ComboBoxItem>280 KM</ComboBoxItem>
+            <ComboBoxItem>300 KM</ComboBoxItem>
+            <ComboBoxItem>380 KM</ComboBoxItem>
+            <ComboBoxItem>420 KM</ComboBoxItem>
+            <ComboBoxItem>610 KM</ComboBoxItem>
+        </ComboBox>
+
+       
+
+        <Label x:Name="lbl_Silnik" Content="Cena" HorizontalAlignment="Left"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="522,64,0,0" VerticalAlignment="Top" Width="180" Height="55"/>
+
+
+
+    </Grid>
+</Window>
